@@ -10,13 +10,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import kr.co.fastcampus.part4.chapter3_5.ui.theme.Part4chapter35Theme
+import kr.co.fastcampus.part4.chapter3_5.ui.theme.SurfaceTheme
 
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContent {
-			Part4chapter35Theme {
+			SurfaceTheme {
 				// A surface container using the 'background' color from the theme
 				Surface(
 					modifier = Modifier.fillMaxSize(),
@@ -37,7 +37,7 @@ fun Greeting(name: String) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-	Part4chapter35Theme {
+	SurfaceTheme {
 		Greeting("Android")
 	}
 }
