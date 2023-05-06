@@ -10,19 +10,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import kr.co.fastcampus.part4.chapter3_11.ui.theme.Part4chapter311Theme
+import kr.co.fastcampus.part4.chapter3_11.ui.theme.CoilTheme
 
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContent {
-			Part4chapter311Theme {
+			CoilTheme {
 				// A surface container using the 'background' color from the theme
 				Surface(
 					modifier = Modifier.fillMaxSize(),
 					color = MaterialTheme.colorScheme.background
 				) {
-					Greeting("Android")
+					CoilEx()
 				}
 			}
 		}
@@ -30,14 +30,18 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-	Text(text = "Hello $name!")
+fun CoilEx() {
+	// 스텝 3: rememberImagePainter를 이용해 Image의 painter를 설정합니다.
+	// (Compose 한국어 문서의 추천, but Deprecated)
+	// 이미지 URI: https://raw.githubusercontent.com/Fastcampus-Android-Lecture-Project-2023/part4-chapter3/main/part-chapter3-10/app/src/main/res/drawable-hdpi/wall.jpg
+
+	// 스텝 4: AsyncImage를 이용해봅니다. model에 주소를 적으면 됩니다.
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-	Part4chapter311Theme {
-		Greeting("Android")
+	CoilTheme {
+		CoilEx()
 	}
 }
