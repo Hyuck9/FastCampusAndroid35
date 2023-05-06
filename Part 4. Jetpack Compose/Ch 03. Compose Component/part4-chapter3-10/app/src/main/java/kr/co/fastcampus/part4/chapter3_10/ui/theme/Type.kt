@@ -1,4 +1,4 @@
-package kr.co.fastcampus.part1.part4.part4.part4.part4.chapter3_10.ui.theme
+package kr.co.fastcampus.part4.chapter3_10.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

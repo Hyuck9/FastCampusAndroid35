@@ -1,4 +1,4 @@
-package kr.co.fastcampus.part1.part4.part4.part4.part4.chapter3_10
+package kr.co.fastcampus.part4.chapter3_10
 
 import org.junit.Test
 

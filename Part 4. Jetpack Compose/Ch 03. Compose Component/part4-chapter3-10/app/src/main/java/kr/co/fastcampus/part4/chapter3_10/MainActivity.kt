@@ -1,4 +1,4 @@
-package kr.co.fastcampus.part1.part4.part4.part4.part4.chapter3_10
+package kr.co.fastcampus.part4.chapter3_10
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,12 +10,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import kr.co.fastcampus.part1.part4.part4.part4.part4.chapter3_10.ui.theme.ImageTheme
+import kr.co.fastcampus.part4.chapter3_10.ui.theme.ImageTheme
 
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
