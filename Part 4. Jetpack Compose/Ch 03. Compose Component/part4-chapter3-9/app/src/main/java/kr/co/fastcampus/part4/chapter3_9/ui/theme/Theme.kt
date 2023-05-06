@@ -1,4 +1,4 @@
-package kr.co.fastcampus.part1.part4.part4.part4.chapter3_9.ui.theme
+package kr.co.fastcampus.part4.chapter3_9.ui.theme
 
 import android.app.Activity
 import android.os.Build

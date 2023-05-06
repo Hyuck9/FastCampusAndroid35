@@ -1,4 +1,4 @@
-package kr.co.fastcampus.part1.part4.part4.part4.chapter3_9
+package kr.co.fastcampus.part4.chapter3_9
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import kr.co.fastcampus.part1.part4.part4.part4.chapter3_9.ui.theme.BoxWithConstraintsTheme
+import kr.co.fastcampus.part4.chapter3_9.ui.theme.BoxWithConstraintsTheme
 
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
