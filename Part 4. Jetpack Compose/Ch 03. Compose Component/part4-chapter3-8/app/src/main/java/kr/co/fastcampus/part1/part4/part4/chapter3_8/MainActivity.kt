@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
 					modifier = Modifier.fillMaxSize(),
 					color = MaterialTheme.colorScheme.background
 				) {
-					ColumnEx("Android")
+					ColumnEx()
 				}
 			}
 		}
@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ColumnEx(name: String) {
+fun ColumnEx() {
 //	Column(modifier = Modifier.size(100.dp)) {
 //		Text(text = "첫 번째")
 //		Text(text = "두 번째")
@@ -86,6 +86,6 @@ fun ColumnEx(name: String) {
 @Composable
 fun DefaultPreview() {
 	ColumnTheme {
-		ColumnEx("Android")
+		ColumnEx()
 	}
 }
