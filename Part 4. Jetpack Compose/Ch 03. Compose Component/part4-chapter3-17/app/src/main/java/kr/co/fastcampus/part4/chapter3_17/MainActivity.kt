@@ -8,6 +8,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -57,13 +60,33 @@ fun CheckBoxWithContent(
 fun ScaffoldEx() {
 	var checked by remember { mutableStateOf(false) }
 
-	Scaffold(topBar = {
-		// 스텝 1: `topBar`를 `TopAppBar`로 채워 봅시다.
-
-	}) {
+	Scaffold(
+		topBar = {
+			// 스텝 1: `topBar`를 `TopAppBar`로 채워 봅시다.
+			SmallTopAppBar(
+				navigationIcon = {
+					IconButton(onClick = { /*TODO*/ }) {
+						Icon(
+							imageVector = Icons.Filled.ArrowBack,
+							contentDescription = "뒤로 가기"
+						)
+					}
+				},
+				title = {
+					Text(text = "Scaffold App")
+				},
+			)
+		},
+		floatingActionButton = {}
+	) {
 		Surface(modifier = Modifier.padding(it)) {
 			// 스텝 2: 아래에 CheckBoxWithContent를 넣어봅시다.
-
+			CheckBoxWithContent(
+				checked = checked,
+				toggleState = { checked = !checked }
+			) {
+				Text(text = "컴포즈를 좋아합니다.")
+			}
 		}
 	}
 }
