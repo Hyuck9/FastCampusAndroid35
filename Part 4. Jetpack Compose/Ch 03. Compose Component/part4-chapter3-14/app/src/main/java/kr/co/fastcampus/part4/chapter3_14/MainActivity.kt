@@ -3,26 +3,29 @@ package kr.co.fastcampus.part4.chapter3_14
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import kr.co.fastcampus.part4.chapter3_14.ui.theme.Part4chapter314Theme
+import androidx.compose.ui.unit.dp
+import kr.co.fastcampus.part4.chapter3_14.ui.theme.TextFieldTheme
 
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContent {
-			Part4chapter314Theme {
+			TextFieldTheme {
 				// A surface container using the 'background' color from the theme
 				Surface(
 					modifier = Modifier.fillMaxSize(),
 					color = MaterialTheme.colorScheme.background
 				) {
-					Greeting("Android")
+					Greeting()
 				}
 			}
 		}
@@ -30,14 +33,31 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-	Text(text = "Hello $name!")
+fun Greeting() {
+	Column(modifier = Modifier.padding(16.dp)) {
+		// 스텝 1: TextField를 Text위에 만듭니다.
+		// value와 onValueChanged는 비워둡시다.
+
+		// 스텝 2: Text에 Android 대신 TextField 입력을
+		// 출력하게 합시다. mutableStateOf("") 필드를
+		// 하나 만듭시다.
+
+		// 스텝 3: TextField에 label을 추가합시다.
+		// 내용에는 `Text("Name")`을 채워봅시다.
+
+		// 스텝 4: TextField와 Text 사이에 Spacer를 넣어 8.dp
+		// 간격을 줍시다.
+
+		// 스텝 5: TextField를 OutlinedTextField로 변경해봅시다.
+
+		Text(text = "Hello Android")
+	}
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-	Part4chapter314Theme {
-		Greeting("Android")
+	TextFieldTheme {
+		Greeting()
 	}
 }
