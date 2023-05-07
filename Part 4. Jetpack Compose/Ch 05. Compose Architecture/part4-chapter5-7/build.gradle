@@ -1,6 +1,12 @@
 buildscript {
     ext {
         compose_version = '1.2.0'
+        dagger_version = '2.40.5'
+        hilt_version = '1.0.0'
+    }
+    // 힐트 안드로이드 그래플 플러그인도 추가해야 합니다.
+    dependencies {
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$dagger_version"
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
