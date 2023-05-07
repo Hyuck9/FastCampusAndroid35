@@ -14,9 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kr.co.fastcampus.part4.chapter5_7.ui.theme.DITheme
 import kr.co.fastcampus.part4.chapter5_7.viewmodel.GithubViewModel
 
+// 단계 3: Activity에 @AndroidEntryPoint를 넣어줍시다.
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)

@@ -1,7 +1,7 @@
 buildscript {
     ext {
         compose_version = '1.2.0'
-        dagger_version = '2.40.5'
+        dagger_version = '2.44.2'
         hilt_version = '1.0.0'
     }
     // 힐트 안드로이드 그래플 플러그인도 추가해야 합니다.
