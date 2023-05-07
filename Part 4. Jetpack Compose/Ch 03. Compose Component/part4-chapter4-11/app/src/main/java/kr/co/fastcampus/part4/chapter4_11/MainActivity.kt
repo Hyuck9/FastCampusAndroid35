@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import kotlinx.coroutines.launch
 import kr.co.fastcampus.part4.chapter4_11.ui.theme.SnackbarTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,13 +36,38 @@ fun SnackbarEx() {
 
 	// 단계 3: couroutineScope를 만듭시다.
 	// `rememberCoroutineScope`를 사용합니다.
+	val coroutineScope = rememberCoroutineScope()
 
 	// 단계 1: scaffoldState를 만들고 Scaffold에 설정합시다.
 	// scaffoldState를 만들기 위해 `rememberScaffoldState`를 사용합니다.
-	Scaffold {
-		Surface(modifier = Modifier.padding(it)) {}
+	val snackbarHostState = remember { SnackbarHostState() }
+	Scaffold(
+		snackbarHost = {
+			SnackbarHost(
+				hostState = snackbarHostState
+			)
+		}
+	) {
 		// 단계 2: "더하기" 버튼을 만들어 봅시다.
 		// action에서 counter를 증가시킵시다.
+		Surface(modifier = Modifier.padding(it)) {
+			Button(onClick = {
+				counter++
+				coroutineScope.launch {
+					snackbarHostState.showSnackbar(
+						message = "카운터는 ${counter}입니다.",
+						actionLabel = "닫기",
+						duration = SnackbarDuration.Short
+					)
+//				when (result) {
+//					SnackbarResult.Dismissed -> {}
+//					SnackbarResult.ActionPerformed -> {}
+//				}
+				}
+			}) {
+				Text("더하기")
+			}
+		}
 
 		// 단계 4: 버튼의 onClick에서 `coroutineScope.launch`를
 		// 사용합니다.
