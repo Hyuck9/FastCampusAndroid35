@@ -3,6 +3,8 @@ package kr.co.fastcampus.part4.chapter4_14
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.*
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,6 +15,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,25 +38,39 @@ class MainActivity : ComponentActivity() {
 	}
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
 fun AnimationEx() {
 	var helloWorldVisible by remember { mutableStateOf(true) }
 	var isRed by remember { mutableStateOf(false) }
 
-	val backgroundColor = Color.LightGray
+//	val backgroundColor = Color.LightGray
 	// 단계 4: `backgroundColor`를 `animateColorAsState`로
 	// 변경하세요.
 	// `targetValue`는 `isRed`에 따라 `Color`를 설정합니다.
+	val backgroundColor by animateColorAsState(
+		targetValue = if (isRed) Color.Red else Color.White
+	)
+
+	val alpha by animateFloatAsState(
+		targetValue = if (isRed) 1.0f else 0.5f
+	)
 
 	Column(
-		modifier = Modifier.padding(16.dp)
+		modifier = Modifier
+			.padding(16.dp)
 			.background(backgroundColor)
+			.alpha(alpha)
 	) {
-		Text(text = "Hello World!")
-
 		// 단계 1: `Text`를 `AnimatedVisibility`로 감싸고 `visible`을
 		// `helloWorldVisible`로 지정해봅시다.
+		AnimatedVisibility(
+			visible = helloWorldVisible,
+			enter = fadeIn() + expandVertically() + scaleIn(),
+			exit = fadeOut()
+		) {
+			Text(text = "Hello World!")
+		}
 
 		// 단계 2: `enter` 파라미터를 바꾸어봅시다.
 		// 예:
