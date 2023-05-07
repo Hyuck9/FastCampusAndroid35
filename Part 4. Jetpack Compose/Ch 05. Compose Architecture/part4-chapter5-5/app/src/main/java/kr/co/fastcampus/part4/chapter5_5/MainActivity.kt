@@ -3,41 +3,60 @@ package kr.co.fastcampus.part4.chapter5_5
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import kr.co.fastcampus.part4.chapter5_5.ui.theme.Part4chapter55Theme
+import androidx.compose.ui.unit.dp
+import kr.co.fastcampus.part4.chapter5_5.ui.theme.ThemeTestTheme
 
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContent {
-			Part4chapter55Theme {
+			ThemeTestTheme {
 				// A surface container using the 'background' color from the theme
 				Surface(
 					modifier = Modifier.fillMaxSize(),
 					color = MaterialTheme.colorScheme.background
 				) {
-					Greeting("Android")
+					Greeting()
 				}
 			}
 		}
 	}
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Greeting(name: String) {
-	Text(text = "Hello $name!")
+fun Greeting() {
+	Card(
+		modifier = Modifier.padding(8.dp)
+	) {
+		Column(
+			modifier = Modifier.padding(16.dp),
+		) {
+			Text("안녕하세요. 패스트캠퍼스")
+			Text("스안녕하세요. 패스트캠퍼")
+			Text("퍼스안녕하세요. 패스트캠")
+			Text("캠퍼스안녕하세요. 패스트")
+			Text("트캠퍼스안녕하세요. 패스")
+			Text("스트캠퍼스안녕하세요. 패")
+			Text("패스트캠퍼스안녕하세요.")
+			Button(onClick = {}) {
+				Text("버튼")
+			}
+		}
+	}
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-	Part4chapter55Theme {
-		Greeting("Android")
+	ThemeTestTheme {
+		Greeting()
 	}
 }
