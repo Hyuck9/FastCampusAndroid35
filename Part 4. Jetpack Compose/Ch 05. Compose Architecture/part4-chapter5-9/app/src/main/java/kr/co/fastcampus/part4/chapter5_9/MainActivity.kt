@@ -9,13 +9,17 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import dagger.hilt.android.AndroidEntryPoint
 import kr.co.fastcampus.part4.chapter5_9.screen.DetailScreen
 import kr.co.fastcampus.part4.chapter5_9.screen.MainScreen
 import kr.co.fastcampus.part4.chapter5_9.ui.theme.PokemonTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -64,9 +68,14 @@ fun TopLevel(
 		// 리스트로 전달해야 한다.
 		composable(
 			"Detail/{pokemonId}",
+			arguments = listOf(
+				navArgument("pokemonId") {
+					type = NavType.IntType
+				}
+			)
 		) {
 			// 단계 4: `pokemonId`를 `Int`값으로 가져오자. (`arguments?.getInt`를 이용)
-			val pokemonId = 0
+			val pokemonId = it.arguments?.getInt("pokemonId", 0) as Int
 			DetailScreen(
 				pokemonId = pokemonId,
 				onUpButtonClick = {
