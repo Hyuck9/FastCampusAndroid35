@@ -8,7 +8,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kr.co.fastcampus.part4.chapter5_4.ui.theme.CompositionLocalTheme
@@ -31,6 +34,7 @@ class MainActivity : ComponentActivity() {
 }
 
 // 단계 4: `compositionLocalOf`에 `8.dp`를 넣어 `LocalElevation`을 할당합니다.
+val LocalElevation = compositionLocalOf { 8.dp }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -50,20 +54,30 @@ fun Greeting() {
 
 	// 단계 6: LocalElevation의 값을 `CompositionLocalProvider`로
 	// 바꾸어 봅시다.
-	Card(
-		modifier = Modifier.padding(8.dp)
-	) {
-		Column(
-			modifier = Modifier.padding(16.dp),
+
+	CompositionLocalProvider(LocalElevation provides 12.dp) {
+		Card(
+			modifier = Modifier.padding(8.dp),
+			elevation = CardDefaults.cardElevation(LocalElevation.current)
 		) {
-			Text("안녕하세요. 패스트캠퍼스")
-			Text("스안녕하세요. 패스트캠퍼")
-			Text("퍼스안녕하세요. 패스트캠")
-			Text("캠퍼스안녕하세요. 패스트")
-			Text("트캠퍼스안녕하세요. 패스")
-			Text("스트캠퍼스안녕하세요. 패")
-			Text("패스트캠퍼스안녕하세요.")
-			// 단계 3: `LocalContext.current`의 `resources`를 출력해보세요.
+			CompositionLocalProvider(LocalContentColor provides Color.Red) {
+				Column(
+					modifier = Modifier.padding(16.dp),
+				) {
+					Text("안녕하세요. 패스트캠퍼스")
+					Text("스안녕하세요. 패스트캠퍼")
+					CompositionLocalProvider(LocalContentColor provides Color.Green) {
+						Text("퍼스안녕하세요. 패스트캠")
+						CompositionLocalProvider(LocalContentColor provides Color.Blue) {
+							Text("캠퍼스안녕하세요. 패스트")
+						}
+						Text("트캠퍼스안녕하세요. 패스")
+						Text("스트캠퍼스안녕하세요. 패")
+					}
+					Text("패스트캠퍼스안녕하세요.")
+					// 단계 3: `LocalContext.current`의 `resources`를 출력해보세요.
+				}
+			}
 		}
 	}
 }
