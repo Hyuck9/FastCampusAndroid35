@@ -3,41 +3,120 @@ package kr.co.fastcampus.part4.chapter4_18
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import kr.co.fastcampus.part4.chapter4_18.ui.theme.Part4chapter418Theme
+import androidx.compose.ui.unit.dp
+import kr.co.fastcampus.part4.chapter4_18.ui.theme.ToDoTheme
 
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContent {
-			Part4chapter418Theme {
+			ToDoTheme {
 				// A surface container using the 'background' color from the theme
 				Surface(
 					modifier = Modifier.fillMaxSize(),
 					color = MaterialTheme.colorScheme.background
 				) {
-					Greeting("Android")
+					TopLevel()
 				}
 			}
 		}
 	}
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Greeting(name: String) {
-	Text(text = "Hello $name!")
+fun TopLevel() {
+	val (text, setText) = remember { mutableStateOf("") }
+	val toDoList = remember { mutableStateListOf<ToDoData>() }
+
+	// 단계 4: `onSubmit`, `onEdit`, `onToggle`, `onDelete`를
+	// 만들어 `ToDo`에 연결합니다.
+
+	Scaffold {
+		Column(modifier = Modifier.padding(it)) {
+			ToDoInput(text, setText, {})
+			// 단계 3: `LazyColumn`으로 `toDoList`를 표시합시다.
+			// `key`를 `toDoData`의 `key`를 사용합니다.
+		}
+	}
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-	Part4chapter418Theme {
-		Greeting("Android")
+	ToDoTheme {
+		TopLevel()
 	}
 }
+
+
+@Composable
+fun ToDoInput(
+	text: String,
+	onTextChange: (String) -> Unit,
+	onSubmit: (String) -> Unit
+) {
+	Row(modifier = Modifier.padding(8.dp)) {
+		OutlinedTextField(
+			value = text,
+			onValueChange = onTextChange,
+			modifier = Modifier.weight(1f)
+		)
+		Spacer(modifier = Modifier.size(8.dp))
+		Button(onClick = {
+			onSubmit(text)
+		}) {
+			Text("입력")
+		}
+	}
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ToDoInputPreview() {
+	ToDoTheme {
+		ToDoInput("테스트", {}, {})
+	}
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ToDo(
+	toDoData: ToDoData,
+	onEdit: (key: Int, text: String) -> Unit = { _, _ -> },
+	onToggle: (key: Int, checked: Boolean) -> Unit = { _, _ -> },
+	onDelete: (key: Int) -> Unit = {}
+) {
+	var isEditing by remember { mutableStateOf(false) }
+	Card(
+		modifier = Modifier.padding(4.dp),
+		elevation = CardDefaults.cardElevation(8.dp)
+	) {
+
+		// 단계 1: `Row`를 만들고 `toDoData.text`를 출력하고
+		// 완료를 체크하는 체크박스, 수정 버튼, 삭제 버튼을 만드세요.
+
+		// 단계 2: `Crossfade`를 통해 `isEditing`을 따라 다른
+		// UI를 보여줍니다. `OutlinedTextField`와 `Button을
+		// 넣어봅시다.
+	}
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ToDoPreview() {
+	ToDoTheme {
+		ToDo(ToDoData(1, "nice", true))
+	}
+}
+
+data class ToDoData(
+	val key: Int,
+	val text: String,
+	val done: Boolean = false
+)
