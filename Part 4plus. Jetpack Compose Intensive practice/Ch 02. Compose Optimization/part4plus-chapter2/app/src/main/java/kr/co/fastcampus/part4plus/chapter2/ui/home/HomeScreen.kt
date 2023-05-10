@@ -79,8 +79,14 @@ fun ColumnScope.MemoList(onClickAction: (Int) -> Unit, memoList: SnapshotStateLi
 		modifier = Modifier
 			.weight(1f)
 	) {
+		/*
+		* TODO: items에 key 값이 지정되어있지 않기 때문에
+		*  list item이 추가되거나 하면 list에 있는 모든 아이템들에 recomposition이 일어남.
+		*  유니크한 key 값만 지정해 주면 해결 가능
+		* */
 		items(
-			items = memoList
+			items = memoList,
+			key = { it.id }
 		) { memo ->
 			Card(
 				modifier = Modifier
