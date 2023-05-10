@@ -85,7 +85,7 @@ fun ColumnScope.MemoList(onClickAction: (Int) -> Unit, memoList: SnapshotStateLi
 		*  유니크한 key 값만 지정해 주면 해결 가능
 		* */
 		items(
-			items = memoList,
+			items = memoList.sortedBy { it.id },
 			key = { it.id }
 		) { memo ->
 			Card(
