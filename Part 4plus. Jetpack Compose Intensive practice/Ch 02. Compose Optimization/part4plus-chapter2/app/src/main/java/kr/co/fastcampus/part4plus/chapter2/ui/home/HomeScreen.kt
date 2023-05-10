@@ -80,8 +80,7 @@ fun ColumnScope.MemoList(onClickAction: (Int) -> Unit, memoList: SnapshotStateLi
 			.weight(1f)
 	) {
 		items(
-			items = memoList,
-			key = { it.id }
+			items = memoList
 		) { memo ->
 			Card(
 				modifier = Modifier
