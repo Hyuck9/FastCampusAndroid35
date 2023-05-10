@@ -5,11 +5,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -43,6 +40,7 @@ fun HomeScreen(homeState: HomeState) {
 @Composable
 fun AddMemo(memoList: SnapshotStateList<Memo>) {
 	val inputValue = remember { mutableStateOf("") }
+	var count by remember { mutableStateOf(0) }
 
 	Row(
 		modifier = Modifier
@@ -64,12 +62,14 @@ fun AddMemo(memoList: SnapshotStateList<Memo>) {
 					Memo(memoList.size, inputValue.value)
 				)
 				inputValue.value = ""
+				count++
 			},
 			modifier = Modifier
 				.wrapContentWidth()
 				.fillMaxHeight()
 		) {
-			Text("ADD")
+			Text("ADD\n$count")
+			count++
 		}
 	}
 }
