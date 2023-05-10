@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -23,7 +24,8 @@ fun HomeScreen(homeState: HomeState) {
 			modifier = Modifier.fillMaxSize(),
 			color = MaterialTheme.colors.background
 		) {
-			val memoList = remember { memos }
+//			val memoList = remember { memos }
+			val memoList = remember { memos.sortedBy { it.id }.toMutableStateList() }
 			val onClickAction: (Int) -> Unit = {
 				homeState.showContent(
 					it
@@ -80,12 +82,17 @@ fun ColumnScope.MemoList(onClickAction: (Int) -> Unit, memoList: SnapshotStateLi
 			.weight(1f)
 	) {
 		/*
-		* TODO: items에 key 값이 지정되어있지 않기 때문에
+		* TODO 1: items에 key 값이 지정되어있지 않기 때문에
 		*  list item이 추가되거나 하면 list에 있는 모든 아이템들에 recomposition이 일어남.
 		*  유니크한 key 값만 지정해 주면 해결 가능
 		* */
+		/*
+		* TODO 2: items 안에 sortedBy (정렬) 등의 계산이 들어가면
+		*  아이템에 변화가 있지 않더라도 매번 recompose 된다.
+		*  정렬을 remember로 빼면 해결 가능
+		* */
 		items(
-			items = memoList.sortedBy { it.id },
+			items = memoList,
 			key = { it.id }
 		) { memo ->
 			Card(
