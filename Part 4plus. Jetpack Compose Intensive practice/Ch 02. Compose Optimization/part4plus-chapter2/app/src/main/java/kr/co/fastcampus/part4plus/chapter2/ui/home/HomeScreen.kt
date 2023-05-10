@@ -68,6 +68,10 @@ fun AddMemo(memoList: SnapshotStateList<Memo>) {
 				.wrapContentWidth()
 				.fillMaxHeight()
 		) {
+			/*
+			* TODO: Recomposition Scope 안에서 사용하는 값에 직접 쓰기 작업을 하면 안됨.
+			*  (역방향쓰기 : 읽힌 이후에 쓰기) 역방향쓰기는 하면 안됨
+			* */
 			Text("ADD\n$count")
 			count++
 		}
