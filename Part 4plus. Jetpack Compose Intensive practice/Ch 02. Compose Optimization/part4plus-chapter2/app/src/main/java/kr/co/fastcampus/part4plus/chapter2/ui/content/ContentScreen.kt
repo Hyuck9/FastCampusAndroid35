@@ -78,7 +78,7 @@ private fun Title(memoText: String, scrollProvider: () -> Int) {
 	Column(
 		modifier = Modifier
 			.heightIn(min = MaxTitleOffset)
-//		    TODO: scroll이 Int 이고, offset 값에 scroll이 들어가 있기 때문에
+//		    TODO: scroll이 "Int" 이고, offset 값에 scroll이 들어가 있기 때문에
 //			TODO: Title이 호출될 때 마다 offset이 계속 바뀌고, 바뀔 때마다 Column 전체에 Recomposition이 발생
 //			TODO: scroll: Int 값을 람다로 바꾸면 최적화 된다.
 //			TODO: --> 값을 직접 읽지 않고, 람다를 통해서 전해줘서 "composition 단계" 이후에 "Layout 단계"에 값이 들어가기 때문에 Recomposition이 일어나지 않게 된다.
