@@ -6,8 +6,10 @@ import androidx.compose.material.Shapes
 import androidx.compose.material.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
 import kr.co.fastcampus.part4plus.movieapp.ui.theme.color.ColorSet
+import kr.co.fastcampus.part4plus.movieapp.ui.theme.color.MyColors
 
 private val LocalColors = staticCompositionLocalOf { ColorSet.Red.LightColors }
 
@@ -33,5 +35,9 @@ fun MovieAppTheme(
 			content = content
 		)
 	}
-
 }
+
+val MaterialTheme.colorScheme: MyColors
+	@Composable
+	@ReadOnlyComposable
+	get() = LocalColors.current

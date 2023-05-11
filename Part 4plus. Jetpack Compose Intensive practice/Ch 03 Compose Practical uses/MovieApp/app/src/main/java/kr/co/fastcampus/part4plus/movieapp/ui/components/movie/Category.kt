@@ -18,7 +18,9 @@ fun CategoryRow() {
 	Column {
 		CategoryTitle("Action")
 		LazyRow(
-			contentPadding = PaddingValues(horizontal = 10.dp)
+			contentPadding = PaddingValues(
+				horizontal = Paddings.large
+			)
 		) {
 //			itemsIndexed
 			item {
