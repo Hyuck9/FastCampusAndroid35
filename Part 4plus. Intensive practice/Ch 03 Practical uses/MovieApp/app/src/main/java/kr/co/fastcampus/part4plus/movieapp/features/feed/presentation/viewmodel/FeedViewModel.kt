@@ -8,7 +8,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kr.co.fastcampus.part4plus.movieapp.features.common.entity.EntityWrapper
 import kr.co.fastcampus.part4plus.movieapp.features.common.repository.IMovieDataSource
+import kr.co.fastcampus.part4plus.movieapp.features.feed.domain.usecase.IGetFeedCategoryUseCase
 import kr.co.fastcampus.part4plus.movieapp.features.feed.presentation.input.IFeedViewModelInput
 import kr.co.fastcampus.part4plus.movieapp.features.feed.presentation.output.FeedState
 import kr.co.fastcampus.part4plus.movieapp.features.feed.presentation.output.FeedUiEffect
@@ -17,7 +19,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FeedViewModel @Inject constructor(
-	private val movieRepository: IMovieDataSource
+	private val movieRepository: IMovieDataSource,
+	private val getFeedCategoryUseCase: IGetFeedCategoryUseCase
 ) : ViewModel(), IFeedViewModelOutput, IFeedViewModelInput {
 
 	// 화면에 보여주기 위한 Flow
@@ -28,9 +31,27 @@ class FeedViewModel @Inject constructor(
 	private val _feedUiEffect = MutableSharedFlow<FeedUiEffect>(replay = 0)
 	override val feedUiEffect: SharedFlow<FeedUiEffect> get() = _feedUiEffect
 
-	fun getMovies() {
+	init {
+		fetchFeed()
+	}
+
+	private fun fetchFeed() {
 		viewModelScope.launch {
-			movieRepository.getMovieList()
+			_feedState.value = FeedState.Loading
+
+			val categories = getFeedCategoryUseCase()
+			_feedState.value = when(categories) {
+				is EntityWrapper.Success -> {
+					FeedState.Main(
+						categories = categories.entity
+					)
+				}
+				is EntityWrapper.Fail -> {
+					FeedState.Failed(
+						reason = categories.error.message ?: "Unknown Error"
+					)
+				}
+			}
 		}
 	}
 
