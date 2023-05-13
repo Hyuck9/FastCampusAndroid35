@@ -43,7 +43,7 @@ class FeedViewModel @Inject constructor(
 			_feedState.value = FeedState.Loading
 
 			val categories = getFeedCategoryUseCase()
-			_feedState.value = when(categories) {
+			_feedState.value = when (categories) {
 				is EntityWrapper.Success -> {
 					FeedState.Main(
 						categories = categories.entity
@@ -59,7 +59,11 @@ class FeedViewModel @Inject constructor(
 	}
 
 	override fun openDetail(movieName: String) {
-		TODO("Not yet implemented")
+		viewModelScope.launch {
+			_feedUiEffect.emit(
+				FeedUiEffect.OpenMovieDetail(movieName)
+			)
+		}
 	}
 
 	override fun openInfoDialog() {

@@ -18,7 +18,7 @@ import kr.co.fastcampus.part4plus.movieapp.ui.theme.h5Title
 
 @Composable
 fun DialogTitleWrapper(title: DialogTitle) {
-	when(title) {
+	when (title) {
 		is DialogTitle.Default -> DefaultDialogTitle(title)
 		is DialogTitle.Large -> LargeDialogTitle(title)
 		is DialogTitle.Header -> HeaderDialogTitle(title)

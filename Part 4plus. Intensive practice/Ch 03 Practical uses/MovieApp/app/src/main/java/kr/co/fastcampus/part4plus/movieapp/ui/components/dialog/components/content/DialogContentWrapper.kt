@@ -28,7 +28,7 @@ val LocalDialogContentStyle = compositionLocalOf { DialogContentStyle() }
 
 @Composable
 fun ColumnScope.DialogContentWrapper(content: DialogContent) {
-	when(content) {
+	when (content) {
 		is DialogContent.Default -> {
 			CompositionLocalProvider(
 				LocalDialogContentStyle provides DialogContentStyle(
