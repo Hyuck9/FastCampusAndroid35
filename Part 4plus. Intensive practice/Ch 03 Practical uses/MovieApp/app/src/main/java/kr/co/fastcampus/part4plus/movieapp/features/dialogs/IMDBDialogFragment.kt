@@ -42,7 +42,7 @@ class IMDBDialogFragment : BaseDialogFragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MovieAppTheme(
-//                    themeState = themeViewModel.themeState.collectAsState()
+                    themeState = themeViewModel.themeState.collectAsState()
                 ) {
                     DialogPopup.Default(
                         title = stringResource(R.string.imdb_title),

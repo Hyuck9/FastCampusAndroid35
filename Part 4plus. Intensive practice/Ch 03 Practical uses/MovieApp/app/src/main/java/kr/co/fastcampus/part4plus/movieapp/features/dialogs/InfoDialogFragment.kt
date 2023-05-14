@@ -35,7 +35,7 @@ class InfoDialogFragment : BaseDialogFragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MovieAppTheme(
-//                    themeState = themeViewModel.themeState.collectAsState()
+                    themeState = themeViewModel.themeState.collectAsState()
                 ) {
                     DialogPopup.Alert(
                         title = stringResource(R.string.app_name),

@@ -38,7 +38,7 @@ class RatingDialogFragment : BaseDialogFragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MovieAppTheme(
-//                    themeState = themeViewModel.themeState.collectAsState()
+                    themeState = themeViewModel.themeState.collectAsState()
                 ) {
                     DialogPopup.Rating(
                         movieName = args.movieName,
