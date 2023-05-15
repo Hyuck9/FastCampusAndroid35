@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kr.co.fastcampus.part4plus.restaurantapp.core.BaseDialogFragment
 import kr.co.fastcampus.part4plus.restaurantapp.R
-import kr.co.fastcampus.part4plus.restaurantapp.features.dialogs.RatingDialogFragmentArgs
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.dialog.DialogPopup
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.dialog.Rating
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.models.buttons.LeadingIconData
@@ -20,7 +19,7 @@ import kr.co.fastcampus.part4plus.restaurantapp.ui_components.models.dialog.Dial
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.RestaurantAppTheme
 
 @AndroidEntryPoint
-class RatingDialogFragment : BaseDialogFragment() {
+class RatingDialogFragment : kr.co.fastcampus.part4plus.restaurantapp.core.BaseDialogFragment() {
 
     private val args: RatingDialogFragmentArgs by navArgs()
 

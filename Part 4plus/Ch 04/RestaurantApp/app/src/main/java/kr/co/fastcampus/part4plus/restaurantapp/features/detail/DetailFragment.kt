@@ -23,7 +23,7 @@ import kr.co.fastcampus.part4plus.restaurantapp.ui_components.navigation.safeNav
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.RestaurantAppTheme
 
 @AndroidEntryPoint
-class DetailFragment: BaseFragment() {
+class DetailFragment: kr.co.fastcampus.part4plus.restaurantapp.core.BaseFragment() {
 
     private val viewModel: RestaurantDetailViewModel by viewModels()
     private val args: DetailFragmentArgs by navArgs()

@@ -15,14 +15,13 @@ import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kr.co.fastcampus.part4plus.restaurantapp.core.BaseDialogFragment
 import kr.co.fastcampus.part4plus.restaurantapp.R
-import kr.co.fastcampus.part4plus.restaurantapp.features.dialogs.ShowMapDialogFragmentArgs
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.dialog.Default
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.dialog.DialogPopup
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.models.dialog.DialogButton
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.RestaurantAppTheme
 
 @AndroidEntryPoint
-class ShowMapDialogFragment : BaseDialogFragment() {
+class ShowMapDialogFragment : kr.co.fastcampus.part4plus.restaurantapp.core.BaseDialogFragment() {
 
     private val args: ShowMapDialogFragmentArgs by navArgs()
 

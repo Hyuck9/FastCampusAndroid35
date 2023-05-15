@@ -18,7 +18,7 @@ import kr.co.fastcampus.part4plus.restaurantapp.ui_components.models.dialog.Dial
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.RestaurantAppTheme
 
 @AndroidEntryPoint
-class InfoDialogFragment : BaseDialogFragment() {
+class InfoDialogFragment : kr.co.fastcampus.part4plus.restaurantapp.core.BaseDialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         dialog?.apply {
