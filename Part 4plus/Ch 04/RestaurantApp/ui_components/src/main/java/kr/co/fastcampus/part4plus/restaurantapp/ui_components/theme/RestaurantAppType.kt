@@ -8,7 +8,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.sp
-import kr.co.fastcampus.part4plus.restaurantapp.R
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.R
 
 private val spoqaBold = FontFamily(
 	Font(R.font.spoqa_han_sans_neo_bold, FontWeight.Bold)

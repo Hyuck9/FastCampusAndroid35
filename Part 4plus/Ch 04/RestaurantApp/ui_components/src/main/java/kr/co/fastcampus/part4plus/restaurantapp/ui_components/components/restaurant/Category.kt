@@ -13,6 +13,7 @@ import kr.co.fastcampus.part4plus.restaurantapp.core.entity.CategoryEntity
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.input.IFeedViewModelInput
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.Paddings
 
+// TODO: Feed 로 옮기기
 @Composable
 fun CategoryRow(
     categoryEntity: CategoryEntity,
