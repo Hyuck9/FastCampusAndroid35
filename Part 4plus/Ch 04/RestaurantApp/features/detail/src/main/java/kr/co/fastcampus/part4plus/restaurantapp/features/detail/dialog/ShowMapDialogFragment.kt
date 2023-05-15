@@ -11,7 +11,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.R
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.dialog.Default
@@ -31,6 +30,7 @@ class ShowMapDialogFragment : kr.co.fastcampus.part4plus.restaurantapp.core.Base
             window?.setBackgroundDrawable(ColorDrawable(requireContext().getColor(android.R.color.transparent)))
         }
 
+        val mapUrl = arguments?.getString("url") ?: ""
         return ComposeView(requireContext()).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
@@ -45,7 +45,7 @@ class ShowMapDialogFragment : kr.co.fastcampus.part4plus.restaurantapp.core.Base
                                 startActivity(
                                     Intent(
                                         Intent.ACTION_VIEW,
-                                        Uri.parse(GOOGLE_MAP_BASE_URL + args.url)
+                                        Uri.parse(GOOGLE_MAP_BASE_URL + mapUrl)
                                     )
                                 )
                             },

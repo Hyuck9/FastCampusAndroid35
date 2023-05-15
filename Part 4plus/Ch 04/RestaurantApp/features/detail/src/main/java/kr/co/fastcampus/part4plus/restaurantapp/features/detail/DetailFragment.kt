@@ -14,8 +14,8 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kr.co.fastcampus.part4plus.restaurantapp.features.detail.presentation.screen.RestaurantDetailScreen
 import kr.co.fastcampus.part4plus.restaurantapp.features.detail.presentation.output.DetailUiEffect
+import kr.co.fastcampus.part4plus.restaurantapp.features.detail.presentation.screen.RestaurantDetailScreen
 import kr.co.fastcampus.part4plus.restaurantapp.features.detail.presentation.viewmodel.RestaurantDetailViewModel
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.navigation.safeNavigate
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.RestaurantAppTheme
@@ -47,8 +47,9 @@ class DetailFragment: kr.co.fastcampus.part4plus.restaurantapp.core.BaseFragment
     }
 
     private fun init() {
+        val id = arguments?.getInt("id") ?: 0
         lifecycleScope.launch {
-            viewModel.initDetail(args.id)
+            viewModel.initDetail(id)
         }
     }
 
@@ -58,21 +59,18 @@ class DetailFragment: kr.co.fastcampus.part4plus.restaurantapp.core.BaseFragment
                 viewModel.outputs.detailUiEffect.collectLatest {
                     when (it) {
                         is DetailUiEffect.Back -> {
-                            findNavController().navigateUp()
+                            findNavController().safeNavigate(
+                                "App://Feed"
+                            )
                         }
                         is DetailUiEffect.OpenUrl -> {
                             findNavController().safeNavigate(
-                                DetailFragmentDirections.actionDetailToMapDialog(
-                                    it.url
-                                )
+                                "App://MAP/${it.url}"
                             )
                         }
                         is DetailUiEffect.RateRestaurant -> {
                             findNavController().safeNavigate(
-                                DetailFragmentDirections.actionDetailToRating(
-                                    restaurantName = it.restaurantName,
-                                    rating = it.rating
-                                )
+                                "App://Rating/${it.restaurantName}/${it.rating}"
                             )
                         }
                     }
