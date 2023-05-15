@@ -16,3 +16,4 @@ rootProject.name = "RestaurantApp"
 include ':app'
 include ':core'
 include ':ui_components'
+include ':features:feed'
