@@ -1,4 +1,4 @@
-package kr.co.fastcampus.part4plus.restaurantapp.libraries.storage.di
+package kr.co.fastcampus.part4plus.restaurantapp.di
 
 import dagger.Module
 import dagger.Provides
