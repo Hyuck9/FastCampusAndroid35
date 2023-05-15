@@ -15,12 +15,12 @@ import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kr.co.fastcampus.part4plus.restaurantapp.BaseFragment
+import kr.co.fastcampus.part4plus.restaurantapp.core.BaseFragment
 import kr.co.fastcampus.part4plus.restaurantapp.features.detail.presentation.screen.RestaurantDetailScreen
 import kr.co.fastcampus.part4plus.restaurantapp.features.detail.presentation.output.DetailUiEffect
 import kr.co.fastcampus.part4plus.restaurantapp.features.detail.presentation.viewmodel.RestaurantDetailViewModel
-import kr.co.fastcampus.part4plus.restaurantapp.ui.navigation.safeNavigate
-import kr.co.fastcampus.part4plus.restaurantapp.ui.theme.RestaurantAppTheme
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.navigation.safeNavigate
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.RestaurantAppTheme
 
 @AndroidEntryPoint
 class DetailFragment: BaseFragment() {

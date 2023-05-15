@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.entity.EntityWrapper
+import kr.co.fastcampus.part4plus.restaurantapp.core.entity.EntityWrapper
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.domain.usecase.IGetFeedCategoryUseCase
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.input.IFeedViewModelInput
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.output.FeedState

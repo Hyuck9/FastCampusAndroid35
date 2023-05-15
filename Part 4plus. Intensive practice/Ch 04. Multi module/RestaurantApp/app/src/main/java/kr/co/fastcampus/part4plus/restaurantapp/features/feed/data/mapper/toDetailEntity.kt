@@ -1,9 +1,9 @@
 package kr.co.fastcampus.part4plus.restaurantapp.features.feed.data.mapper
 
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.entity.CategoryEntity
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.entity.RestaurantDetailEntity
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.entity.RestaurantFeedItemEntity
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.network.model.RestaurantResponse
+import kr.co.fastcampus.part4plus.restaurantapp.core.entity.CategoryEntity
+import kr.co.fastcampus.part4plus.restaurantapp.core.entity.RestaurantDetailEntity
+import kr.co.fastcampus.part4plus.restaurantapp.core.entity.RestaurantFeedItemEntity
+import kr.co.fastcampus.part4plus.restaurantapp.core.network.model.RestaurantResponse
 
 fun RestaurantResponse.toDetailEntity(): RestaurantDetailEntity = RestaurantDetailEntity(
     id = this.id,
@@ -18,12 +18,12 @@ fun RestaurantResponse.toDetailEntity(): RestaurantDetailEntity = RestaurantDeta
     rating = this.reviews.map { it.rating }.average().toFloat()
 )
 
-fun RestaurantResponse.LatLngResponse.toEntity(): RestaurantDetailEntity.LatLngEntity = RestaurantDetailEntity.LatLngEntity(
+fun RestaurantResponse.LatLngResponse.toEntity(): RestaurantDetailEntity.LatLngEntity = kr.co.fastcampus.part4plus.restaurantapp.core.entity.RestaurantDetailEntity.LatLngEntity(
     lat = this.lat,
     lng = this.lng
 )
 
-fun RestaurantResponse.OperatingHoursResponse.toEntity(): RestaurantDetailEntity.OperatingHoursEntity = RestaurantDetailEntity.OperatingHoursEntity(
+fun RestaurantResponse.OperatingHoursResponse.toEntity(): RestaurantDetailEntity.OperatingHoursEntity = kr.co.fastcampus.part4plus.restaurantapp.core.entity.RestaurantDetailEntity.OperatingHoursEntity(
     monday = this.monday,
     tuesday = this.tuesday,
     wednesday = this.wednesday,
@@ -33,7 +33,7 @@ fun RestaurantResponse.OperatingHoursResponse.toEntity(): RestaurantDetailEntity
     sunday = this.sunday
 )
 
-fun RestaurantResponse.ReviewResponse.toEntity(): RestaurantDetailEntity.ReviewEntity = RestaurantDetailEntity.ReviewEntity(
+fun RestaurantResponse.ReviewResponse.toEntity(): RestaurantDetailEntity.ReviewEntity = kr.co.fastcampus.part4plus.restaurantapp.core.entity.RestaurantDetailEntity.ReviewEntity(
     name = this.name,
     date = this.date,
     rating = this.rating,

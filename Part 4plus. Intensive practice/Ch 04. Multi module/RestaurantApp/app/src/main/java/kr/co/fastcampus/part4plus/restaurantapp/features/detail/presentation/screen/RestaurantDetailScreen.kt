@@ -33,15 +33,15 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Scale
 import kr.co.fastcampus.part4plus.restaurantapp.R
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.entity.RestaurantDetailEntity
+import kr.co.fastcampus.part4plus.restaurantapp.core.entity.RestaurantDetailEntity
 import kr.co.fastcampus.part4plus.restaurantapp.features.detail.presentation.input.IDetailViewModelInputs
 import kr.co.fastcampus.part4plus.restaurantapp.features.detail.presentation.output.RestaurantDetailState
-import kr.co.fastcampus.part4plus.restaurantapp.ui.components.buttons.PrimaryButton
-import kr.co.fastcampus.part4plus.restaurantapp.ui.components.buttons.SecondaryButton
-import kr.co.fastcampus.part4plus.restaurantapp.ui.components.restaurant.RestaurantMeta
-import kr.co.fastcampus.part4plus.restaurantapp.ui.theme.Paddings
-import kr.co.fastcampus.part4plus.restaurantapp.ui.theme.colorScheme
-import kr.co.fastcampus.part4plus.restaurantapp.ui.util.getAnnotatedText
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.buttons.PrimaryButton
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.buttons.SecondaryButton
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.restaurant.RestaurantMeta
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.Paddings
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.colorScheme
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.util.getAnnotatedText
 
 
 @Composable

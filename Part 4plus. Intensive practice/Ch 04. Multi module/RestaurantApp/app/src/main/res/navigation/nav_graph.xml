@@ -38,7 +38,7 @@
 
     <dialog
         android:id="@+id/rating_fragment"
-        android:name="kr.co.fastcampus.part4plus.restaurantapp.features.dialogs.RatingDialogFragment"
+        android:name="kr.co.fastcampus.part4plus.restaurantapp.features.detail.dialog.RatingDialogFragment"
         android:label="Rating">
         <argument
             android:name="restaurantName"
@@ -50,7 +50,7 @@
 
     <dialog
         android:id="@+id/map_dialog_fragment"
-        android:name="kr.co.fastcampus.part4plus.restaurantapp.features.dialogs.ShowMapDialogFragment"
+        android:name="kr.co.fastcampus.part4plus.restaurantapp.features.detail.dialog.ShowMapDialogFragment"
         android:label="MAP">
         <argument
             android:name="url"
@@ -59,7 +59,7 @@
 
     <dialog
         android:id="@+id/info_fragment"
-        android:name="kr.co.fastcampus.part4plus.restaurantapp.features.dialogs.InfoDialogFragment"
+        android:name="kr.co.fastcampus.part4plus.restaurantapp.features.feed.dialog.InfoDialogFragment"
         android:label="Notice">
     </dialog>
 </navigation>

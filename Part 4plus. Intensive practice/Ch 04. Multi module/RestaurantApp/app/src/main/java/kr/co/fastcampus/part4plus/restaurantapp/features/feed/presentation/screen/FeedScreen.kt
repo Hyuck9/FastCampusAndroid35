@@ -40,8 +40,8 @@ import androidx.compose.ui.unit.dp
 import kr.co.fastcampus.part4plus.restaurantapp.R
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.input.IFeedViewModelInput
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.output.FeedState
-import kr.co.fastcampus.part4plus.restaurantapp.ui.components.restaurant.CategoryRow
-import kr.co.fastcampus.part4plus.restaurantapp.ui.theme.Paddings
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.restaurant.CategoryRow
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.Paddings
 import timber.log.Timber
 
 val COMMON_HORIZONTAL_PADDING = Paddings.medium

@@ -1,12 +1,12 @@
 package kr.co.fastcampus.part4plus.restaurantapp.features.feed.data.mapper
 
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.entity.CategoryEntity
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.entity.EntityWrapper
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.entity.RestaurantDetailEntity
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.mapper.BaseMapper
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.network.model.RestaurantResponse
+import kr.co.fastcampus.part4plus.restaurantapp.core.entity.CategoryEntity
+import kr.co.fastcampus.part4plus.restaurantapp.core.entity.EntityWrapper
+import kr.co.fastcampus.part4plus.restaurantapp.core.entity.RestaurantDetailEntity
+import kr.co.fastcampus.part4plus.restaurantapp.core.mapper.BaseMapper
+import kr.co.fastcampus.part4plus.restaurantapp.core.network.model.RestaurantResponse
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.data.FeedConstants
-import kr.co.fastcampus.part4plus.restaurantapp.library.storage.IStorage
+import kr.co.fastcampus.part4plus.restaurantapp.libraries.storage.IStorage
 import javax.inject.Inject
 
 class CategoryMapper @Inject constructor(

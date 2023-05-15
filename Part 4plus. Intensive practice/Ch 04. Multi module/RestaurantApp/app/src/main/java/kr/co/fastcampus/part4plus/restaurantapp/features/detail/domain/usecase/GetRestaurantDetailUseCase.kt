@@ -1,7 +1,7 @@
 package kr.co.fastcampus.part4plus.restaurantapp.features.detail.domain.usecase
 
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.entity.RestaurantDetailEntity
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.repository.IRestaurantDataSource
+import kr.co.fastcampus.part4plus.restaurantapp.core.entity.RestaurantDetailEntity
+import kr.co.fastcampus.part4plus.restaurantapp.core.repository.IRestaurantDataSource
 import javax.inject.Inject
 
 class GetRestaurantDetailUseCase @Inject constructor(

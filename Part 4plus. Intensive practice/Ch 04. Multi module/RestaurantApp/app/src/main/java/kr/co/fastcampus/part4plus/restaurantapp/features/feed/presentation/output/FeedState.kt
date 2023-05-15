@@ -1,6 +1,6 @@
 package kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.output
 
-import kr.co.fastcampus.part4plus.restaurantapp.features.common.entity.CategoryEntity
+import kr.co.fastcampus.part4plus.restaurantapp.core.entity.CategoryEntity
 
 
 sealed class FeedState {
