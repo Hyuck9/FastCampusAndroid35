@@ -1,4 +1,4 @@
-package kr.co.fastcampus.part4plus.restaurantapp.ui_component
+package kr.co.fastcampus.part4plus.restaurantapp.ui_components
 
 import org.junit.Test
 
