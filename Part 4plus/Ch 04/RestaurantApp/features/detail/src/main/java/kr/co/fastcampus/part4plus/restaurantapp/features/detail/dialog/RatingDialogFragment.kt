@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
-import kr.co.fastcampus.part4plus.restaurantapp.core.BaseDialogFragment
-import kr.co.fastcampus.part4plus.restaurantapp.R
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.R
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.dialog.DialogPopup
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.dialog.Rating
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.models.buttons.LeadingIconData
@@ -20,8 +18,6 @@ import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.RestaurantAp
 
 @AndroidEntryPoint
 class RatingDialogFragment : kr.co.fastcampus.part4plus.restaurantapp.core.BaseDialogFragment() {
-
-    private val args: RatingDialogFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         dialog?.apply {

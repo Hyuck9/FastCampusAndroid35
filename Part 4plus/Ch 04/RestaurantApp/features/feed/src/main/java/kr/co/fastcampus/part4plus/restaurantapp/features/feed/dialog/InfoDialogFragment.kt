@@ -1,8 +1,6 @@
-package kr.co.fastcampus.part4plus.restaurantapp.features.detail.dialog
+package kr.co.fastcampus.part4plus.restaurantapp.features.feed.dialog
 
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,21 +9,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
-import kr.co.fastcampus.part4plus.restaurantapp.core.BaseDialogFragment
-import kr.co.fastcampus.part4plus.restaurantapp.R
-import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.dialog.Default
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.R
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.dialog.Alert
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.dialog.DialogPopup
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.models.dialog.DialogButton
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.RestaurantAppTheme
 
 @AndroidEntryPoint
-class ShowMapDialogFragment : kr.co.fastcampus.part4plus.restaurantapp.core.BaseDialogFragment() {
-
-    private val args: ShowMapDialogFragmentArgs by navArgs()
-
-    val GOOGLE_MAP_BASE_URL = "https://www.google.com/maps/"
+class InfoDialogFragment : kr.co.fastcampus.part4plus.restaurantapp.core.BaseDialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         dialog?.apply {
@@ -40,19 +32,11 @@ class ShowMapDialogFragment : kr.co.fastcampus.part4plus.restaurantapp.core.Base
                 RestaurantAppTheme(
                     themeState = themeViewModel.themeState.collectAsState()
                 ) {
-                    DialogPopup.Default(
-                        title = stringResource(R.string.map_title),
-                        bodyText = stringResource(R.string.map_message),
+                    DialogPopup.Alert(
+                        title = stringResource(R.string.app_name),
+                        bodyText = stringResource(R.string.info_message),
                         buttons = listOf(
-                            DialogButton.Primary(getString(R.string.open)) {
-                                startActivity(
-                                    Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse(GOOGLE_MAP_BASE_URL + args.url)
-                                    )
-                                )
-                            },
-                            DialogButton.SecondaryBorderless(getString(R.string.cancel)) {
+                            DialogButton.UnderlinedText(getString(R.string.close)) {
                                 dismiss()
                             }
                         )

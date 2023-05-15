@@ -11,11 +11,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kr.co.fastcampus.part4plus.restaurantapp.core.BaseFragment
 import kr.co.fastcampus.part4plus.restaurantapp.features.detail.presentation.screen.RestaurantDetailScreen
 import kr.co.fastcampus.part4plus.restaurantapp.features.detail.presentation.output.DetailUiEffect
 import kr.co.fastcampus.part4plus.restaurantapp.features.detail.presentation.viewmodel.RestaurantDetailViewModel
@@ -26,7 +24,6 @@ import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.RestaurantAp
 class DetailFragment: kr.co.fastcampus.part4plus.restaurantapp.core.BaseFragment() {
 
     private val viewModel: RestaurantDetailViewModel by viewModels()
-    private val args: DetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,

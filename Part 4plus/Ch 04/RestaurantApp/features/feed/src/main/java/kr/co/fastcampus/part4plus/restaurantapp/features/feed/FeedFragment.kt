@@ -14,7 +14,6 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kr.co.fastcampus.part4plus.restaurantapp.core.BaseFragment
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.output.FeedUiEffect
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.screen.FeedScreen
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.viewmodel.FeedViewModel

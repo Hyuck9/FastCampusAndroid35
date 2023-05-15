@@ -1,4 +1,4 @@
-package kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.restaurant
+package kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -24,7 +24,6 @@ import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.Paddings
 private val CARD_WIDTH = 200.dp
 private val ICON_SIZE = 12.dp
 
-// TODO:  Feed 로 옮기기
 @Composable
 fun FeedItem(
     feedItem: RestaurantFeedItemEntity,

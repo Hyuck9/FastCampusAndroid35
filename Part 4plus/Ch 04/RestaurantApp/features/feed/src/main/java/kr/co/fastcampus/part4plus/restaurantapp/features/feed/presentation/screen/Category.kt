@@ -1,4 +1,4 @@
-package kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.restaurant
+package kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,7 +13,6 @@ import kr.co.fastcampus.part4plus.restaurantapp.core.entity.CategoryEntity
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.input.IFeedViewModelInput
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.Paddings
 
-// TODO: Feed 로 옮기기
 @Composable
 fun CategoryRow(
     categoryEntity: CategoryEntity,

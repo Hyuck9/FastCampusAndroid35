@@ -1,4 +1,4 @@
-package kr.co.fastcampus.part4plus.restaurantapp.features.feed.data.mapper
+package kr.co.fastcampus.part4plus.restaurantapp.features.feed.mapper
 
 import kr.co.fastcampus.part4plus.restaurantapp.core.entity.CategoryEntity
 import kr.co.fastcampus.part4plus.restaurantapp.core.entity.EntityWrapper

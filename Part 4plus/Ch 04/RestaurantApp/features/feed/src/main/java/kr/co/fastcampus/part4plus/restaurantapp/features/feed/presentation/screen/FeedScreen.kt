@@ -37,10 +37,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import kr.co.fastcampus.part4plus.restaurantapp.R
+import kr.co.fastcampus.part4plus.restaurantapp.ui_components.R
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.input.IFeedViewModelInput
 import kr.co.fastcampus.part4plus.restaurantapp.features.feed.presentation.output.FeedState
-import kr.co.fastcampus.part4plus.restaurantapp.ui_components.components.restaurant.CategoryRow
 import kr.co.fastcampus.part4plus.restaurantapp.ui_components.theme.Paddings
 import timber.log.Timber
 
