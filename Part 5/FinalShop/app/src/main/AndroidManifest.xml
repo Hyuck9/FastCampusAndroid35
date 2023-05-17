@@ -11,8 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalShop"
         tools:targetApi="31">
-        <!--<activity
-            android:name=".MainActivity"
+        <activity
+            android:name="fastcampus.part5.chapter2.ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.FinalShop">
@@ -21,7 +21,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>-->
+        </activity>
     </application>
 
 </manifest>
