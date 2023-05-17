@@ -1,4 +1,4 @@
-package kr.co.fastcampus.part5.chapter2
+package kr.co.fastcampus.part5.chapter2.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
