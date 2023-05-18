@@ -2,6 +2,8 @@ package fastcampus.part5.chapter2.ui
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Send
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -67,7 +69,7 @@ fun MainBottomNavigationBar(navController: NavHostController) {
 			BottomNavigationItem(
 				icon = {
 					Icon(
-						painter = painterResource(id = R.drawable.ic_launcher_background),
+						imageVector = Icons.Default.Send,
 						contentDescription = item.route
 					)
 				},
