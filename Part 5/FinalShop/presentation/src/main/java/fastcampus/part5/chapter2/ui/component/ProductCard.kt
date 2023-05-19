@@ -1,4 +1,4 @@
-package fastcampus.part5.chapter2.ui.common
+package fastcampus.part5.chapter2.ui.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

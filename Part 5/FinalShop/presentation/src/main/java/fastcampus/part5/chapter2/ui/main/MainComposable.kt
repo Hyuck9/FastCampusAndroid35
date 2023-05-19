@@ -18,9 +18,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import fastcampus.part5.chapter2.R
-import fastcampus.part5.chapter2.ui.common.ProductCard
+import fastcampus.part5.chapter2.ui.component.BannerCard
+import fastcampus.part5.chapter2.ui.component.BannerListCard
+import fastcampus.part5.chapter2.ui.component.ProductCard
 import fastcampus.part5.chapter2.viewmodel.MainViewModel
 import fastcampus.part5.domain.model.Banner
+import fastcampus.part5.domain.model.BannerList
 import fastcampus.part5.domain.model.ModelType
 import fastcampus.part5.domain.model.Product
 
@@ -39,13 +42,16 @@ fun MainInsideScreen(viewModel: MainViewModel) {
 			}
 		) {
 			when (val item = modelList[it]) {
-				is Banner -> {
-					BannerCard(banner = item)
-				}
 				is Product -> {
 					ProductCard(product = item) {
 						// TODO: 상세 화면 개발 시 추가
 					}
+				}
+				is Banner -> {
+					BannerCard(banner = item)
+				}
+				is BannerList -> {
+					BannerListCard(model = item)
 				}
 			}
 		}
@@ -54,27 +60,8 @@ fun MainInsideScreen(viewModel: MainViewModel) {
 
 private fun getSpanCountByType(type: ModelType, defaultColumnCount: Int): Int {
 	return when (type) {
-		ModelType.BANNER -> defaultColumnCount
 		ModelType.PRODUCT -> 1
-	}
-}
-
-@Composable
-fun BannerCard(banner: Banner) {
-	Card(
-		shape = RoundedCornerShape(12.dp),
-		modifier = Modifier
-			.fillMaxWidth()
-			.padding(10.dp)
-			.shadow(20.dp)
-	) {
-		Image(
-			painter = painterResource(id = R.drawable.product_image),
-			contentDescription = "description",
-			contentScale = ContentScale.Crop,
-			modifier = Modifier
-				.fillMaxWidth()
-				.aspectRatio(2f)    // width/height -> width : 2, height : 1 비율
-		)
+		ModelType.BANNER -> defaultColumnCount
+		ModelType.BANNER_LIST -> defaultColumnCount
 	}
 }
