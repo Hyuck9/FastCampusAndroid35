@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,10 +23,11 @@ import fastcampus.part5.chapter2.R
 import fastcampus.part5.chapter2.ui.theme.Purple200
 import fastcampus.part5.domain.model.*
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ProductCard(
 	product: Product,
-	onClick: (Product) -> Unit?
+	onClick: (Product) -> Unit
 ) {
 	Card(
 		shape = RoundedCornerShape(8.dp),
@@ -33,7 +35,8 @@ fun ProductCard(
 			.fillMaxWidth()
 			.height(intrinsicSize = IntrinsicSize.Max)
 			.padding(10.dp)
-			.shadow(elevation = 10.dp)
+			.shadow(elevation = 10.dp),
+		onClick = { onClick(product) }
 	) {
 		Column(
 			modifier = Modifier
@@ -65,7 +68,7 @@ fun ProductCard(
 }
 
 @Composable
-private fun Price(product: Product) {
+fun Price(product: Product) {
 	when (product.price.salesStatus) {
 		SalesStatus.ON_SALE -> {
 			Text(
