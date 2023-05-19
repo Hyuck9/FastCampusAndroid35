@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -37,17 +38,17 @@ fun ProductCard(
 		Column(
 			modifier = Modifier
 				.fillMaxWidth()
-				.height(320.dp)
 				.padding(10.dp),
 			verticalArrangement = Arrangement.Center,
 			horizontalAlignment = Alignment.Start
 		) {
 			Image(
 				painter = painterResource(id = R.drawable.product_image),
+				contentScale = ContentScale.Crop,
 				contentDescription = "description",
 				modifier = Modifier
 					.fillMaxWidth()
-					.wrapContentWidth(Alignment.End)
+					.aspectRatio(1f)
 			)
 			Text(
 				fontSize = 14.sp,
@@ -70,28 +71,21 @@ private fun Price(product: Product) {
 			Text(
 				fontSize = 18.sp,
 				fontWeight = FontWeight.Bold,
-				text = "${product.price.originPrice}"
+				text = "${product.price.originPrice}원"
 			)
 		}
 		SalesStatus.ON_DISCOUNT -> {
 			Text(
 				fontSize = 14.sp,
-				text = "${product.price.originPrice}",
+				text = "${product.price.originPrice}원",
 				style = TextStyle(textDecoration = TextDecoration.LineThrough)
 			)
-			Row {
-				Text(
-					fontSize = 18.sp,
-					fontWeight = FontWeight.Bold,
-					text = "할인가: "
-				)
-				Text(
-					fontSize = 18.sp,
-					fontWeight = FontWeight.Bold,
-					color = Purple200,
-					text = "${product.price.finalPrice}"
-				)
-			}
+			Text(
+				fontSize = 18.sp,
+				fontWeight = FontWeight.Bold,
+				color = Purple200,
+				text = "${product.price.finalPrice}원"
+			)
 		}
 		SalesStatus.SOLD_OUT -> {
 			Text(
