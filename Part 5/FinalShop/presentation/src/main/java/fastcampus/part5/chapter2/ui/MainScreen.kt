@@ -18,7 +18,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import fastcampus.part5.chapter2.ui.main.MainInsideScreen
+import fastcampus.part5.chapter2.ui.main.CategoryScreen
+import fastcampus.part5.chapter2.ui.main.HomeScreen
 import fastcampus.part5.chapter2.ui.theme.FinalShopTheme
 import fastcampus.part5.chapter2.viewmodel.MainViewModel
 
@@ -121,10 +122,10 @@ fun MainNavigationScreen(
 		startDestination = MainNavigationItem.Main.route
 	) {
 		composable(MainNavigationItem.Main.route) {
-			MainInsideScreen(viewModel)
+			HomeScreen(viewModel)
 		}
 		composable(MainNavigationItem.Category.route) {
-			Text(text = "Hello Category")
+			CategoryScreen(viewModel)
 		}
 		composable(MainNavigationItem.MyPage.route) {
 			Text(text = "Hello MyPage")

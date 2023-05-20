@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import fastcampus.part5.domain.model.Banner
 import fastcampus.part5.domain.model.BannerList
-import fastcampus.part5.domain.model.Carousel
 import fastcampus.part5.domain.model.Product
+import fastcampus.part5.domain.usecase.CategoryUseCase
 import fastcampus.part5.domain.usecase.MainUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,13 +15,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-	useCase: MainUseCase
+	mainUseCase: MainUseCase,
+	categoryUseCase: CategoryUseCase
 ) : ViewModel() {
 
 	private val _columnCount = MutableStateFlow(DEFAULT_COLUMN_COUNT)
 	val columCount: StateFlow<Int> = _columnCount
 
-	val modelList = useCase.getModelList()
+	val modelList = mainUseCase.getModelList()
+	val categories = categoryUseCase.getCategories()
 
 	fun openSearchForm() {
 		println("openSearchForm")

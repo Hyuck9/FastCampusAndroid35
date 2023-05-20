@@ -11,7 +11,7 @@ import fastcampus.part5.chapter2.viewmodel.MainViewModel
 import fastcampus.part5.domain.model.*
 
 @Composable
-fun MainInsideScreen(viewModel: MainViewModel) {
+fun HomeScreen(viewModel: MainViewModel) {
 	val modelList by viewModel.modelList.collectAsState(initial = listOf())
 	val columnCount by viewModel.columCount.collectAsState()
 
