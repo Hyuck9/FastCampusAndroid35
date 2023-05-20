@@ -7,7 +7,7 @@ import fastcampus.part5.domain.model.Ranking
 class RankingVM(
 	model: Ranking,
 	private val productDelegate: ProductDelegate
-) : PresentationVM() {
+) : PresentationVM<Ranking>(model) {
 
 	fun openRankingProduct(product: Product) {
 		productDelegate.openProduct(product)

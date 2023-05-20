@@ -6,9 +6,10 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import fastcampus.part5.chapter2.model.*
 import fastcampus.part5.chapter2.ui.component.*
 import fastcampus.part5.chapter2.viewmodel.MainViewModel
-import fastcampus.part5.domain.model.*
+import fastcampus.part5.domain.model.ModelType
 
 @Composable
 fun MainHomeScreen(viewModel: MainViewModel) {
@@ -20,36 +21,16 @@ fun MainHomeScreen(viewModel: MainViewModel) {
 			count = modelList.size,
 			span = { index ->
 				val item = modelList[index]
-				val spanCount = getSpanCountByType(item.type, columnCount)
+				val spanCount = getSpanCountByType(item.model.type, columnCount)
 				GridItemSpan(spanCount)
 			}
 		) {
 			when (val item = modelList[it]) {
-				is Banner -> {
-					BannerCard(banner = item) { banner ->
-						viewModel.openBanner(banner)
-					}
-				}
-				is BannerList -> {
-					BannerListCard(bannerList = item) { bannerList ->
-						viewModel.openBannerList(bannerList)
-					}
-				}
-				is Product -> {
-					ProductCard(product = item) { product ->
-						viewModel.openProduct(product)
-					}
-				}
-				is Carousel -> {
-					CarouselCard(carousel = item) { product ->
-						viewModel.openCarouselProduct(product)
-					}
-				}
-				is Ranking -> {
-					RankingCard(ranking = item) { product ->
-						viewModel.openRankingProduct(product)
-					}
-				}
+				is BannerVM -> BannerCard(presentationVM = item)
+				is BannerListVM -> BannerListCard(presentationVM = item)
+				is ProductVM -> ProductCard(presentationVM = item)
+				is CarouselVM -> CarouselCard(presentationVM = item)
+				is RankingVM -> RankingCard(presentationVM = item)
 			}
 		}
 	}
