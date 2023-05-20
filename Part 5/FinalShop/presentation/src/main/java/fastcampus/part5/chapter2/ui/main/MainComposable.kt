@@ -6,10 +6,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import fastcampus.part5.chapter2.ui.component.BannerCard
-import fastcampus.part5.chapter2.ui.component.BannerListCard
-import fastcampus.part5.chapter2.ui.component.CarouselCard
-import fastcampus.part5.chapter2.ui.component.ProductCard
+import fastcampus.part5.chapter2.ui.component.*
 import fastcampus.part5.chapter2.viewmodel.MainViewModel
 import fastcampus.part5.domain.model.*
 
@@ -48,6 +45,11 @@ fun MainInsideScreen(viewModel: MainViewModel) {
 						viewModel.openCarouselProduct(product)
 					}
 				}
+				is Ranking -> {
+					RankingCard(ranking = item) { product ->
+						viewModel.openRankingProduct(product)
+					}
+				}
 			}
 		}
 	}
@@ -56,8 +58,9 @@ fun MainInsideScreen(viewModel: MainViewModel) {
 private fun getSpanCountByType(type: ModelType, defaultColumnCount: Int): Int {
 	return when (type) {
 		ModelType.PRODUCT -> 1
-		ModelType.BANNER -> defaultColumnCount
-		ModelType.BANNER_LIST -> defaultColumnCount
-		ModelType.CAROUSEL -> defaultColumnCount
+		ModelType.BANNER,
+		ModelType.BANNER_LIST,
+		ModelType.CAROUSEL,
+		ModelType.RANKING -> defaultColumnCount
 	}
 }

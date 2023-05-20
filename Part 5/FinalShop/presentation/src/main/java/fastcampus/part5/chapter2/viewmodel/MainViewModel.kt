@@ -41,6 +41,10 @@ class MainViewModel @Inject constructor(
 
 	}
 
+	fun openRankingProduct(product: Product) {
+
+	}
+
 	fun openBanner(banner: Banner) {
 
 	}
