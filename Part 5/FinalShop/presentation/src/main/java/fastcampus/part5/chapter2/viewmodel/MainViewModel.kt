@@ -2,9 +2,13 @@ package fastcampus.part5.chapter2.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavHostController
 import dagger.hilt.android.lifecycle.HiltViewModel
+import fastcampus.part5.chapter2.ui.NavigationRouteName
+import fastcampus.part5.chapter2.util.NavigationUtils
 import fastcampus.part5.domain.model.Banner
 import fastcampus.part5.domain.model.BannerList
+import fastcampus.part5.domain.model.Category
 import fastcampus.part5.domain.model.Product
 import fastcampus.part5.domain.usecase.CategoryUseCase
 import fastcampus.part5.domain.usecase.MainUseCase
@@ -53,6 +57,10 @@ class MainViewModel @Inject constructor(
 
 	fun openBannerList(bannerList: BannerList) {
 
+	}
+
+	fun openCategory(navController: NavHostController, category: Category) {
+		NavigationUtils.navigate(navController, NavigationRouteName.CATEGORY, category)
 	}
 
 	companion object {
