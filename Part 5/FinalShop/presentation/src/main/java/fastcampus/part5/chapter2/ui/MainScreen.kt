@@ -20,9 +20,11 @@ import com.google.gson.Gson
 import fastcampus.part5.chapter2.ui.category.CategoryScreen
 import fastcampus.part5.chapter2.ui.main.MainCategoryScreen
 import fastcampus.part5.chapter2.ui.main.MainHomeScreen
+import fastcampus.part5.chapter2.ui.product_detail.ProductDetailScreen
 import fastcampus.part5.chapter2.ui.theme.FinalShopTheme
 import fastcampus.part5.chapter2.viewmodel.MainViewModel
 import fastcampus.part5.domain.model.Category
+import fastcampus.part5.domain.model.Product
 
 //sealed class MainNavigationItem(var route: String, val icon: ImageVector, var name: String) {
 //	object Main : MainNavigationItem("Main", Icons.Filled.Home, "Main")
@@ -124,7 +126,7 @@ fun MainNavigationScreen(
 		startDestination = NavigationRouteName.MAIN_HOME
 	) {
 		composable(NavigationRouteName.MAIN_HOME) {
-			MainHomeScreen(viewModel)
+			MainHomeScreen(navController, viewModel)
 		}
 		composable(NavigationRouteName.MAIN_CATEGORY) {
 			MainCategoryScreen(viewModel, navController)
@@ -139,7 +141,16 @@ fun MainNavigationScreen(
 			val categoryString = it.arguments?.getString("category")
 			val category = Gson().fromJson(categoryString, Category::class.java)
 			if (category != null) {
-				CategoryScreen(category = category)
+				CategoryScreen(category = category, navHostController = navController)
+			}
+		}
+		composable(
+			route = "${NavigationRouteName.PRODUCT_DETAIL}/{product}",
+			arguments = listOf(navArgument("product") { type = NavType.StringType })
+		) {
+			val productString = it.arguments?.getString("product")
+			if (productString != null) {
+				ProductDetailScreen(productString)
 			}
 		}
 	}

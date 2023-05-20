@@ -16,12 +16,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import fastcampus.part5.chapter2.R
 import fastcampus.part5.chapter2.model.CarouselVM
 import fastcampus.part5.domain.model.Product
 
 @Composable
-fun CarouselCard(presentationVM: CarouselVM) {
+fun CarouselCard(navHostController: NavHostController, presentationVM: CarouselVM) {
 	val scrollState = rememberLazyListState()
 	Column {
 		Text(
@@ -39,7 +40,7 @@ fun CarouselCard(presentationVM: CarouselVM) {
 			items(presentationVM.model.productList.size) {
 				CarouselProductCard(
 					product = presentationVM.model.productList[it],
-					onClick = { product -> presentationVM.openProduct(product) }
+					onClick = { product -> presentationVM.openCarouselProduct(navHostController, product) }
 				)
 			}
 		}

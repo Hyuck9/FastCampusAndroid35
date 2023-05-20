@@ -19,6 +19,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import fastcampus.part5.chapter2.R
 import fastcampus.part5.chapter2.delegate.ProductDelegate
 import fastcampus.part5.chapter2.model.ProductVM
@@ -27,7 +29,7 @@ import fastcampus.part5.domain.model.*
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ProductCard(presentationVM: ProductVM) {
+fun ProductCard(navHostController: NavHostController, presentationVM: ProductVM) {
 	Card(
 		shape = RoundedCornerShape(8.dp),
 		modifier = Modifier
@@ -35,7 +37,7 @@ fun ProductCard(presentationVM: ProductVM) {
 			.height(intrinsicSize = IntrinsicSize.Max)
 			.padding(10.dp)
 			.shadow(elevation = 10.dp),
-		onClick = { presentationVM.openProduct(presentationVM.model) }
+		onClick = { presentationVM.openProduct(navHostController, presentationVM.model) }
 	) {
 		Column(
 			modifier = Modifier
@@ -105,6 +107,7 @@ fun Price(product: Product) {
 @Composable
 private fun PreviewProductCard() {
 	ProductCard(
+		rememberNavController(),
 		ProductVM(
 			model = Product(
 				productId = "1",
@@ -125,7 +128,7 @@ private fun PreviewProductCard() {
 				isFreeShipping = false
 			),
 			object : ProductDelegate {
-				override fun openProduct(product: Product) {}
+				override fun openProduct(navHostController: NavHostController, product: Product) {}
 			}
 		)
 	)
@@ -135,6 +138,7 @@ private fun PreviewProductCard() {
 @Composable
 private fun PreviewProductCardDiscount() {
 	ProductCard(
+		rememberNavController(),
 		ProductVM(
 			model = Product(
 				productId = "1",
@@ -155,7 +159,7 @@ private fun PreviewProductCardDiscount() {
 				isFreeShipping = false
 			),
 			object : ProductDelegate {
-				override fun openProduct(product: Product) {}
+				override fun openProduct(navHostController: NavHostController, product: Product) {}
 			}
 		)
 	)
@@ -165,6 +169,7 @@ private fun PreviewProductCardDiscount() {
 @Composable
 private fun PreviewProductCardSoldOut() {
 	ProductCard(
+		rememberNavController(),
 		ProductVM(
 			model = Product(
 				productId = "1",
@@ -185,7 +190,7 @@ private fun PreviewProductCardSoldOut() {
 				isFreeShipping = false
 			),
 			object : ProductDelegate {
-				override fun openProduct(product: Product) {}
+				override fun openProduct(navHostController: NavHostController, product: Product) {}
 			}
 		)
 	)
