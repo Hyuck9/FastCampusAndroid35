@@ -16,32 +16,20 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.gson.Gson
 import fastcampus.part5.chapter2.ui.category.CategoryScreen
 import fastcampus.part5.chapter2.ui.main.MainCategoryScreen
 import fastcampus.part5.chapter2.ui.main.MainHomeScreen
+import fastcampus.part5.chapter2.ui.main.MyPageScreen
 import fastcampus.part5.chapter2.ui.product_detail.ProductDetailScreen
 import fastcampus.part5.chapter2.ui.search.SearchScreen
 import fastcampus.part5.chapter2.ui.theme.FinalShopTheme
 import fastcampus.part5.chapter2.viewmodel.MainViewModel
 import fastcampus.part5.domain.model.Category
 
-//sealed class MainNavigationItem(var route: String, val icon: ImageVector, var name: String) {
-//	object Main : MainNavigationItem("Main", Icons.Filled.Home, "Main")
-//	object Category : MainNavigationItem("Category", Icons.Filled.Star, "Category")
-//	object MyPage : MainNavigationItem("MyPage", Icons.Filled.AccountBox,"MyPage")
-//}
-
-@Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-	FinalShopTheme {
-		MainScreen()
-	}
-}
-
-@Composable
-fun MainScreen() {
+fun MainScreen(googleSignInClient: GoogleSignInClient) {
 	val viewModel = hiltViewModel<MainViewModel>()
 	val scaffoldState = rememberScaffoldState()
 	val navController = rememberNavController()
@@ -64,6 +52,7 @@ fun MainScreen() {
 		MainNavigationScreen(
 			viewModel = viewModel,
 			navController = navController,
+			googleSignInClient = googleSignInClient,
 			modifier = Modifier.padding(paddingValues)
 		)
 	}
@@ -121,6 +110,7 @@ fun MainBottomNavigationBar(navController: NavHostController, currentRoute: Stri
 fun MainNavigationScreen(
 	viewModel: MainViewModel,
 	navController: NavHostController,
+	googleSignInClient: GoogleSignInClient,
 	modifier: Modifier = Modifier
 ) {
 	NavHost(
@@ -134,7 +124,7 @@ fun MainNavigationScreen(
 			MainCategoryScreen(viewModel, navController)
 		}
 		composable(NavigationRouteName.MAIN_MY_PAGE) {
-			Text(text = "Hello MyPage")
+			MyPageScreen(viewModel = viewModel, googleSignInClient = googleSignInClient)
 		}
 		composable(
 			route = "${NavigationRouteName.CATEGORY}/{category}",

@@ -31,4 +31,8 @@ interface DataModule {
 	@Binds
 	@Singleton
 	fun bindSearchRepository(searchRepositoryImpl: SearchRepositoryImpl): SearchRepository
+
+	@Binds
+	@Singleton
+	fun bindAccountRepository(accountRepositoryImpl: AccountRepositoryImpl) : AccountRepository
 }

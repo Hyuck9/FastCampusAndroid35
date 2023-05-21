@@ -11,6 +11,7 @@ import fastcampus.part5.chapter2.model.*
 import fastcampus.part5.chapter2.ui.NavigationRouteName
 import fastcampus.part5.chapter2.util.NavigationUtils
 import fastcampus.part5.domain.model.*
+import fastcampus.part5.domain.usecase.AccountUseCase
 import fastcampus.part5.domain.usecase.CategoryUseCase
 import fastcampus.part5.domain.usecase.MainUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,15 +23,29 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
 	mainUseCase: MainUseCase,
-	categoryUseCase: CategoryUseCase
+	categoryUseCase: CategoryUseCase,
+	private val accountUseCase: AccountUseCase
 ) : ViewModel(), ProductDelegate, BannerDelegate, CategoryDelegate {
 	private val _columnCount = MutableStateFlow(DEFAULT_COLUMN_COUNT)
 	val columCount: StateFlow<Int> = _columnCount
 	val modelList = mainUseCase.getModelList().map(::convertToPresentationVM)
 	val categories = categoryUseCase.getCategories()
+	val accountInfo = accountUseCase.getAccountInfo()
 
 	fun openSearchForm(navHostController: NavHostController) {
 		NavigationUtils.navigate(navHostController, NavigationRouteName.SEARCH)
+	}
+
+	fun signInGoogle(accountInfo: AccountInfo) {
+		viewModelScope.launch {
+			accountUseCase.signInGoogle(accountInfo)
+		}
+	}
+
+	fun signOutGoogle() {
+		viewModelScope.launch {
+			accountUseCase.signOutGoogle()
+		}
 	}
 
 	fun updateColumnCount(count: Int) {

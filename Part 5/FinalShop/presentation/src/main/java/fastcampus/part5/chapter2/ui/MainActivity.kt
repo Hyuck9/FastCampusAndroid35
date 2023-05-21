@@ -9,16 +9,21 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import dagger.hilt.android.AndroidEntryPoint
 import fastcampus.part5.chapter2.ui.theme.FinalShopTheme
 import fastcampus.part5.chapter2.viewmodel.MainViewModel
 import fastcampus.part5.chapter2.viewmodel.TempViewModel
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
 //	private val viewModel: TempViewModel by viewModels()
 	private val viewModel: MainViewModel by viewModels()
+
+	@Inject
+	lateinit var googleSignInClient: GoogleSignInClient
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -30,7 +35,7 @@ class MainActivity : ComponentActivity() {
 					modifier = Modifier.fillMaxSize(),
 					color = MaterialTheme.colors.background
 				) {
-					MainScreen()
+					MainScreen(googleSignInClient)
 				}
 			}
 		}
