@@ -5,9 +5,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,6 +25,7 @@ import fastcampus.part5.domain.model.Product
 @Composable
 fun CarouselCard(navHostController: NavHostController, presentationVM: CarouselVM) {
 	val scrollState = rememberLazyListState()
+
 	Column {
 		Text(
 			fontSize = 14.sp,
@@ -31,28 +33,24 @@ fun CarouselCard(navHostController: NavHostController, presentationVM: CarouselV
 			text = presentationVM.model.title,
 			modifier = Modifier.padding(10.dp)
 		)
-		LazyRow(
+
+		LazyRow (
 			state = scrollState,
 			modifier = Modifier
 				.fillMaxWidth()
 				.wrapContentHeight()
-		) {
+		){
 			items(presentationVM.model.productList.size) {
-				CarouselProductCard(
-					product = presentationVM.model.productList[it],
-					onClick = { product -> presentationVM.openCarouselProduct(navHostController, product) }
-				)
+				CarouselProductCard(product = presentationVM.model.productList[it],presentationVM) { product ->
+					presentationVM.openCarouselProduct(navHostController, product)
+				}
 			}
 		}
 	}
 }
-
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-private fun CarouselProductCard(
-	product: Product,
-	onClick: (Product) -> Unit
-) {
+private fun CarouselProductCard(product: Product,presentationVM: CarouselVM, onClick: (Product) -> Unit) {
 	Card(
 		shape = RoundedCornerShape(8.dp),
 		modifier = Modifier
@@ -61,26 +59,37 @@ private fun CarouselProductCard(
 			.padding(10.dp),
 		onClick = { onClick(product) }
 	) {
-		Column(
-			modifier = Modifier
-				.fillMaxWidth()
-				.padding(10.dp),
-			verticalArrangement = Arrangement.Center,
-			horizontalAlignment = Alignment.Start
-		) {
-			Image(
-				painter = painterResource(id = R.drawable.product_image),
-				contentScale = ContentScale.Crop,
-				contentDescription = "description",
+		Box(modifier = Modifier.fillMaxWidth()) {
+			IconButton(
+				onClick = { presentationVM.likeProduct(product) },
+				modifier = Modifier.align(Alignment.BottomEnd)
+			) {
+				Icon(
+					if (product.isLike) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
+					"FavoriteIcon"
+				)
+			}
+			Column(
 				modifier = Modifier
 					.fillMaxWidth()
-					.aspectRatio(1f)
-			)
-			Text(
-				fontSize = 14.sp,
-				text = product.productName
-			)
-			Price(product)
+					.padding(10.dp),
+				verticalArrangement = Arrangement.Center,
+				horizontalAlignment = Alignment.Start
+			) {
+				Image(
+					painter = painterResource(id = R.drawable.product_image),
+					"description",
+					contentScale = ContentScale.Crop,
+					modifier = Modifier
+						.fillMaxWidth()
+						.aspectRatio(1f)
+				)
+				Text(
+					fontSize = 14.sp,
+					text = product.productName
+				)
+				Price(product)
+			}
 		}
 	}
 }
