@@ -31,7 +31,7 @@ class SearchViewModel @Inject constructor(
 
 	fun search(keyword: String) {
 		viewModelScope.launch {
-			searchInternal(keyword)
+			searchInternalNewSearchKeyword(keyword)
 		}
 	}
 
@@ -43,9 +43,17 @@ class SearchViewModel @Inject constructor(
 		}
 	}
 
-	private suspend fun searchInternal(newSearchKeyword: String = "") {
+	private suspend fun searchInternal() {
 		useCase.search(searchManager.searchKeyword, searchManager.currentFilters()).collectLatest {
-			if (newSearchKeyword.isNotEmpty()) searchManager.initSearchManager(newSearchKeyword, it)
+			_searchResult.emit(it.map(::convertToProductVM))
+		}
+	}
+
+	private suspend fun searchInternalNewSearchKeyword(newSearchKeyword: String = "") {
+		searchManager.clearFilter()
+
+		useCase.search(SearchKeyword(newSearchKeyword), searchManager.currentFilters()).collectLatest {
+			searchManager.initSearchManager(newSearchKeyword, it)
 
 			_searchResult.emit(it.map(::convertToProductVM))
 		}
