@@ -4,14 +4,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import fastcampus.part5.data.repository.CategoryRepositoryImpl
-import fastcampus.part5.data.repository.MainRepositoryImpl
-import fastcampus.part5.data.repository.ProductDetailRepositoryImpl
-import fastcampus.part5.data.repository.TempRepositoryImpl
-import fastcampus.part5.domain.repository.CategoryRepository
-import fastcampus.part5.domain.repository.MainRepository
-import fastcampus.part5.domain.repository.ProductDetailRepository
-import fastcampus.part5.domain.repository.TempRepository
+import fastcampus.part5.data.repository.*
+import fastcampus.part5.domain.repository.*
 import javax.inject.Singleton
 
 @Module
@@ -33,4 +27,8 @@ interface DataModule {
 	@Binds
 	@Singleton
 	fun bindProductDetailRepository(productDetailRepositoryImpl: ProductDetailRepositoryImpl): ProductDetailRepository
+
+	@Binds
+	@Singleton
+	fun bindSearchRepository(searchRepositoryImpl: SearchRepositoryImpl): SearchRepository
 }
