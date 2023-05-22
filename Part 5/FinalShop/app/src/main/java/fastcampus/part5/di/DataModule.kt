@@ -35,4 +35,9 @@ interface DataModule {
 	@Binds
 	@Singleton
 	fun bindAccountRepository(accountRepositoryImpl: AccountRepositoryImpl) : AccountRepository
+
+
+	@Binds
+	@Singleton
+	fun bindLikeRepository(likeRepositoryImpl: LikeRepositoryImpl) : LikeRepository
 }

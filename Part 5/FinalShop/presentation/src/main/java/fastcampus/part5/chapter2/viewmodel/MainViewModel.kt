@@ -13,6 +13,7 @@ import fastcampus.part5.chapter2.util.NavigationUtils
 import fastcampus.part5.domain.model.*
 import fastcampus.part5.domain.usecase.AccountUseCase
 import fastcampus.part5.domain.usecase.CategoryUseCase
+import fastcampus.part5.domain.usecase.LikeUseCase
 import fastcampus.part5.domain.usecase.MainUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -24,12 +25,14 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
 	private val mainUseCase: MainUseCase,
 	categoryUseCase: CategoryUseCase,
-	private val accountUseCase: AccountUseCase
+	private val accountUseCase: AccountUseCase,
+	likeUseCase: LikeUseCase
 ) : ViewModel(), ProductDelegate, BannerDelegate, CategoryDelegate {
 	private val _columnCount = MutableStateFlow(DEFAULT_COLUMN_COUNT)
 	val columCount: StateFlow<Int> = _columnCount
 	val modelList = mainUseCase.getModelList().map(::convertToPresentationVM)
 	val categories = categoryUseCase.getCategories()
+	val likeProducts = likeUseCase.getLikeProducts().map(::convertToPresentationVM)
 	val accountInfo = accountUseCase.getAccountInfo()
 
 	fun openSearchForm(navHostController: NavHostController) {
