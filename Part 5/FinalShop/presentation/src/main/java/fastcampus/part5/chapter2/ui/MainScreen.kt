@@ -142,8 +142,19 @@ fun MainNavigationScreen(
 			BasketScreen()
 		}
 		composable(
+			CategoryNav.routeWithArgName(),
+			arguments = CategoryNav.arguments,
+			deepLinks = CategoryNav.deepLinks
+		) {
+			val category = CategoryNav.findArgument(it)
+			if (category != null) {
+				CategoryScreen(navHostController = navController, category = category)
+			}
+		}
+		composable(
 			route = "${NavigationRouteName.CATEGORY}/{category}",
-			arguments = listOf(navArgument("category") { type = NavType.StringType })
+			arguments = listOf(navArgument("category") { type = NavType.StringType }),
+			deepLinks = listOf()
 		) {
 			val categoryString = it.arguments?.getString("category")
 			val category = Gson().fromJson(categoryString, Category::class.java)

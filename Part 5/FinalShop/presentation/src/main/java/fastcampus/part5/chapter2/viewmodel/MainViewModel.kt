@@ -8,6 +8,7 @@ import fastcampus.part5.chapter2.delegate.BannerDelegate
 import fastcampus.part5.chapter2.delegate.CategoryDelegate
 import fastcampus.part5.chapter2.delegate.ProductDelegate
 import fastcampus.part5.chapter2.model.*
+import fastcampus.part5.chapter2.ui.CategoryNav
 import fastcampus.part5.chapter2.ui.NavigationRouteName
 import fastcampus.part5.chapter2.util.NavigationUtils
 import fastcampus.part5.domain.model.*
@@ -77,6 +78,8 @@ class MainViewModel @Inject constructor(
 
 	override fun openCategory(navHostController: NavHostController, category: Category) {
 		NavigationUtils.navigate(navHostController, NavigationRouteName.CATEGORY, category)
+
+		NavigationUtils.navigateV2(navHostController, CategoryNav.navigateWithArg(category))
 	}
 
 	private fun convertToPresentationVM(list: List<BaseModel>): List<PresentationVM<out BaseModel>> {
