@@ -6,7 +6,7 @@ import androidx.navigation.NavHostController
 import dagger.hilt.android.lifecycle.HiltViewModel
 import fastcampus.part5.chapter2.delegate.ProductDelegate
 import fastcampus.part5.chapter2.model.ProductVM
-import fastcampus.part5.chapter2.ui.NavigationRouteName
+import fastcampus.part5.chapter2.ui.ProductDetailNav
 import fastcampus.part5.chapter2.util.NavigationUtils
 import fastcampus.part5.domain.model.Product
 import fastcampus.part5.domain.model.SearchFilter
@@ -58,11 +58,12 @@ class SearchViewModel @Inject constructor(
 	private suspend fun searchInternalNewSearchKeyword(newSearchKeyword: String = "") {
 		searchManager.clearFilter()
 
-		useCase.search(SearchKeyword(newSearchKeyword), searchManager.currentFilters()).collectLatest {
-			searchManager.initSearchManager(newSearchKeyword, it)
+		useCase.search(SearchKeyword(newSearchKeyword), searchManager.currentFilters())
+			.collectLatest {
+				searchManager.initSearchManager(newSearchKeyword, it)
 
-			_searchResult.emit(it.map(::convertToProductVM))
-		}
+				_searchResult.emit(it.map(::convertToProductVM))
+			}
 	}
 
 	private fun convertToProductVM(product: Product): ProductVM {
@@ -70,7 +71,10 @@ class SearchViewModel @Inject constructor(
 	}
 
 	override fun openProduct(navHostController: NavHostController, product: Product) {
-		NavigationUtils.navigate(navHostController, NavigationRouteName.PRODUCT_DETAIL, product)
+		NavigationUtils.navigate(
+			navHostController,
+			ProductDetailNav.navigateWithArg(product.productId)
+		)
 	}
 
 }

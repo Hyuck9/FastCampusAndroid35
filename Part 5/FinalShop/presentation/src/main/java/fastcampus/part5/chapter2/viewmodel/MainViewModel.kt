@@ -8,8 +8,7 @@ import fastcampus.part5.chapter2.delegate.BannerDelegate
 import fastcampus.part5.chapter2.delegate.CategoryDelegate
 import fastcampus.part5.chapter2.delegate.ProductDelegate
 import fastcampus.part5.chapter2.model.*
-import fastcampus.part5.chapter2.ui.CategoryNav
-import fastcampus.part5.chapter2.ui.NavigationRouteName
+import fastcampus.part5.chapter2.ui.*
 import fastcampus.part5.chapter2.util.NavigationUtils
 import fastcampus.part5.domain.model.*
 import fastcampus.part5.domain.usecase.AccountUseCase
@@ -37,11 +36,11 @@ class MainViewModel @Inject constructor(
 	val accountInfo = accountUseCase.getAccountInfo()
 
 	fun openSearchForm(navHostController: NavHostController) {
-		NavigationUtils.navigate(navHostController, NavigationRouteName.SEARCH)
+		NavigationUtils.navigate(navHostController, SearchNav.route)
 	}
 
 	fun openBasket(navHostController: NavHostController) {
-		NavigationUtils.navigate(navHostController, NavigationRouteName.BASKET)
+		NavigationUtils.navigate(navHostController, BasketNav.route)
 	}
 
 	fun signIn(accountInfo: AccountInfo) {
@@ -63,7 +62,7 @@ class MainViewModel @Inject constructor(
 	}
 
 	override fun openProduct(navHostController: NavHostController, product: Product) {
-		NavigationUtils.navigate(navHostController, NavigationRouteName.PRODUCT_DETAIL, product)
+		NavigationUtils.navigate(navHostController, ProductDetailNav.navigateWithArg(product.productId))
 	}
 
 	override fun likeProduct(product: Product) {
@@ -77,9 +76,7 @@ class MainViewModel @Inject constructor(
 	}
 
 	override fun openCategory(navHostController: NavHostController, category: Category) {
-		NavigationUtils.navigate(navHostController, NavigationRouteName.CATEGORY, category)
-
-		NavigationUtils.navigateV2(navHostController, CategoryNav.navigateWithArg(category))
+		NavigationUtils.navigate(navHostController, CategoryNav.navigateWithArg(category))
 	}
 
 	private fun convertToPresentationVM(list: List<BaseModel>): List<PresentationVM<out BaseModel>> {
