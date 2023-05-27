@@ -10,6 +10,7 @@ import dagger.hilt.components.SingletonComponent
 import fastcampus.part5.data.db.ApplicationDatabase
 import fastcampus.part5.data.db.dao.BasketDao
 import fastcampus.part5.data.db.dao.LikeDao
+import fastcampus.part5.data.db.dao.PurchaseHistoryDao
 import fastcampus.part5.data.db.dao.SearchDao
 import javax.inject.Singleton
 
@@ -47,5 +48,11 @@ object DatabaseModule {
 	@Singleton
 	fun provideBasketDao(database: ApplicationDatabase) : BasketDao {
 		return database.basketDao()
+	}
+
+	@Provides
+	@Singleton
+	fun providePurchaseHistoryDao(database: ApplicationDatabase): PurchaseHistoryDao {
+		return database.purchaseHistoryDao()
 	}
 }
