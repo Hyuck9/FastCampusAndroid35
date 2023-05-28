@@ -44,4 +44,8 @@ interface DataModule {
 	@Binds
 	@Singleton
 	fun bindBasketRepository(basketRepositoryImpl: BasketRepositoryImpl) : BasketRepository
+
+	@Binds
+	@Singleton
+	fun bindPurchaseHistoryRepository(purchaseHistoryRepositoryImpl: PurchaseHistoryRepositoryImpl) : PurchaseHistoryRepository
 }

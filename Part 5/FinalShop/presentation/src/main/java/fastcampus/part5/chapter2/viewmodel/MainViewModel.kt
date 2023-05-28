@@ -43,6 +43,10 @@ class MainViewModel @Inject constructor(
 		NavigationUtils.navigate(navHostController, BasketNav.route)
 	}
 
+	fun openPurchaseHistory(navHostController: NavHostController) {
+		NavigationUtils.navigate(navHostController, PurchaseHistoryNav.route)
+	}
+
 	fun signIn(accountInfo: AccountInfo) {
 		viewModelScope.launch {
 			accountUseCase.signIn(accountInfo)

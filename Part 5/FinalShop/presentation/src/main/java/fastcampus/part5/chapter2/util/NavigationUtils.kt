@@ -34,6 +34,7 @@ object NavigationUtils {
 			NavigationRouteName.MAIN_CATEGORY -> MainNav.Category
 			NavigationRouteName.SEARCH -> SearchNav
 			NavigationRouteName.BASKET -> BasketNav
+			NavigationRouteName.PURCHASE_HISTORY -> PurchaseHistoryNav
 
 			ProductDetailNav.routeWithArgName() -> ProductDetailNav
 			CategoryNav.routeWithArgName() -> CategoryNav

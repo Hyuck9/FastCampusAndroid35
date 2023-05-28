@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import fastcampus.part5.data.db.entity.BasketProductEntity
 import fastcampus.part5.data.db.entity.PurchaseHistoryEntity
 import kotlinx.coroutines.flow.Flow
 
