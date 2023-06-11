@@ -47,6 +47,9 @@
                     android:scheme="kakaoa3add53dfca8288cd175bde0b3b88ec3" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3897260489773203~6600627780"/>
     </application>
 
 </manifest>
