@@ -67,12 +67,11 @@
 
     <RadioGroup
         android:id="@+id/bloodTypeRadioGroup"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:gravity="end"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@id/bloodTypeTextView"
-        app:layout_constraintEnd_toStartOf="@id/bloodTypeSpinner"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toTopOf="@id/bloodTypeTextView">
 
@@ -92,10 +91,11 @@
 
     <Spinner
         android:id="@+id/bloodTypeSpinner"
-        android:layout_width="70dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@id/bloodTypeTextView"
         app:layout_constraintEnd_toEndOf="@id/nameEditText"
+        app:layout_constraintStart_toEndOf="@id/bloodTypeRadioGroup"
         app:layout_constraintTop_toTopOf="@id/bloodTypeTextView" />
 
     <TextView
@@ -134,7 +134,7 @@
         android:text="주의사항 노출"
         app:layout_constraintBottom_toBottomOf="@id/warningTextView"
         app:layout_constraintEnd_toEndOf="@id/nameEditText"
-        app:layout_constraintStart_toStartOf="@id/warningEditText"
+        app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toTopOf="@id/warningTextView" />
 
     <EditText
@@ -165,5 +165,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/baseline_edit_24" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:id="@+id/birthLayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="birthEditText,birthImageView"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
