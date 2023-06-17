@@ -9,6 +9,8 @@ import kr.co.fastcampus.part1.chapter3.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityMainBinding
+	var inputNumber = 0
+	var cmToM = true
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -20,9 +22,6 @@ class MainActivity : AppCompatActivity() {
 		val inputEditText = binding.inputEditText
 		val inputUnitTextView = binding.inputUnitTextView
 		val swapImageButton = binding.swapImageBugtton
-		var cmToM = true
-
-		var inputNumber = 0
 
 		inputEditText.addTextChangedListener { text ->
 			inputNumber = if (text.isNullOrEmpty()) 0 else text.toString().toInt()
@@ -46,5 +45,17 @@ class MainActivity : AppCompatActivity() {
 				outputTextView.text = inputNumber.times(100).toString()
 			}
 		}
+	}
+
+	override fun onSaveInstanceState(outState: Bundle) {
+		outState.putBoolean("cmToM", cmToM)
+		super.onSaveInstanceState(outState)
+	}
+
+	override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+		cmToM = savedInstanceState.getBoolean("cmToM")
+		binding.inputUnitTextView.text = if (cmToM) "cm" else "m"
+		binding.outputUnitTextView.text = if (cmToM) "m" else "cm"
+		super.onRestoreInstanceState(savedInstanceState)
 	}
 }
