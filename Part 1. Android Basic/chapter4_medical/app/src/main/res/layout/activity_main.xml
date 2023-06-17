@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/nameValueTextView"
+        android:id="@+id/nameEditText"
         style="@style/Value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@id/nameTextView" />
 
     <TextView
-        android:id="@+id/birthValueTextView"
+        android:id="@+id/birthEditText"
         style="@style/Value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@id/birthTextView" />
 
     <TextView
-        android:id="@+id/bloodTypeValueTextView"
+        android:id="@+id/bloodTypeEditText"
         style="@style/Value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@id/bloodTypeTextView" />
 
     <TextView
-        android:id="@+id/emergencyContactValueTextView"
+        android:id="@+id/emergencyContactEditText"
         style="@style/Value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@id/emergencyContactTextView" />
 
     <TextView
-        android:id="@+id/warningValueTextView"
+        android:id="@+id/warningEditText"
         style="@style/Value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
