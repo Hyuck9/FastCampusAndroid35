@@ -17,6 +17,7 @@
         android:id="@+id/gridLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:minHeight="300dp"
         android:background="@color/black"
         android:clipChildren="false"
         android:columnCount="3">
@@ -87,7 +88,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             style="@style/Button.KeyPad"
             android:onClick="@{() -> view.onClickDelete()}"
-            android:padding="56dp"
+            android:padding="24dp"
             android:src="@drawable/ic_baseline_backspace_24" />
 
         <androidx.appcompat.widget.AppCompatTextView
