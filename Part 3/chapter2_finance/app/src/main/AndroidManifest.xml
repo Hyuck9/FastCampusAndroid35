@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name="fastcampus.part3.chapter2.PinActivity" />
+        <activity android:name="fastcampus.part3.chapter2.IdentityInputActivity" />
     </application>
 
 </manifest>
