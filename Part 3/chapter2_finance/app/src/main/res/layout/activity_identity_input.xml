@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="view"
             type="fastcampus.part3.chapter2.IdentityInputActivity" />
@@ -49,6 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:onClick="@{() -> view.onClickDone()}"
                     android:paddingHorizontal="48dp"
                     android:text="입력 완료"
                     android:visibility="gone"
@@ -63,7 +65,7 @@
                     tools:visibility="visible">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/phoneEdit"
+                        android:id="@+id/phoneEditText"
                         style="@style/Widget.App.TextInputEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -185,7 +187,7 @@
                     tools:visibility="visible">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/birthdayEdit"
+                        android:id="@+id/birthdayEditText"
                         style="@style/Widget.App.TextInputEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
